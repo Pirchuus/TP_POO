@@ -5,10 +5,24 @@
 /// </summary>
 public class Enfermeiro
 {
-	public Enfermeiro()
+
+    #region ATRIBUTOS
+
+    public string Funcao { get; set; } // pode ser um enumerado talvez ????
+    public int NumRegistoEnf { get; set; }
+
+    #endregion
+
+    #region CONSTRUTOR
+
+    public Enfermeiro()
 	{
 		//
 		// TODO: Add constructor logic here
 		//
 	}
+
+    #endregion
+
+    
 }
