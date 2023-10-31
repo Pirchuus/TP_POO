@@ -1,7 +1,7 @@
 ﻿using System;
 
 /// <summary>
-/// Summary description for Class1
+/// Summary description for Enfermeiro
 /// </summary>
 public class Enfermeiro
 {
