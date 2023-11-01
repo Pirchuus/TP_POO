@@ -1,4 +1,5 @@
 using System;
+using Enums;
 
 /// <summary>
 /// Summary description for Class1
@@ -9,10 +10,10 @@ public class Pessoa
 
     public string Nome { get; set; }
     public int NumTelemovel { get; set; }
-    public string Genero { get; set; } // pode ser enumerado
+    public Genero Genero { get; set; } 
     public DateTime DataNascimento { get; set; }
-    public string Cidade { get; set; } // pode ser enumerado talvez
-    public int CodigoPostal { get; set; } // acho que não é do tipo int
+    public string Cidade { get; set; } 
+    public string CodigoPostal { get; set; } 
 
     #endregion
 
