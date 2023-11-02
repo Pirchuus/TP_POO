@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Enums
+namespace Enumerados
 {
     public enum Genero
     {

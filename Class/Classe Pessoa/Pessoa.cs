@@ -1,5 +1,5 @@
 using System;
-using Enums;
+using GeneroPessoa;
 
 /// <summary>
 /// Summary description for Class1
@@ -10,7 +10,7 @@ public class Pessoa
 
     public string Nome { get; set; }
     public int NumTelemovel { get; set; }
-    public Genero Genero { get; set; }
+    public Genero genero { get; set; }
     public DateTime DataNascimento { get; set; }
     public Cidade Cidade { get; set; } 
     public string CodigoPostal { get; set; } 
