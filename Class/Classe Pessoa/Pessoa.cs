@@ -10,9 +10,9 @@ public class Pessoa
 
     public string Nome { get; set; }
     public int NumTelemovel { get; set; }
-    public Generos genero { get; set; }
+    public Sexo Genero { get; set; }
     public DateTime DataNascimento { get; set; }
-    public Cidades Cidade { get; set; } 
+    public Cidade Cidad { get; set; } 
     public string CodigoPostal { get; set; } 
 
     #endregion

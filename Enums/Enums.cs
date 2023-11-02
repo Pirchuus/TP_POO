@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace TP_POO.Enums
 {
-    public enum Enum
+    public enum Sexo
     {
         Masculino,
         Feminino,
-
-    };
     
+    };
+
+    public enum Cidade
+    {
+        Braga,
+        Porto,
+        Lisboa,
+        Guimarães,
+        Vila Nova de Famalicão,
+        Barcelos
+    };
 }
