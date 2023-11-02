@@ -1,4 +1,5 @@
 using System;
+using Classe Pessoa.Pessoa;
 
 /// <summary>
 /// Summary description for Class1
@@ -7,9 +8,21 @@ public class Utente : Pessoa
 {
     #region ATRIBUTOS
 
+    /// <summary>
+    /// Histórico Médico de situações passadas anteriormente
+    /// </summary>
     public string HistoricoMedico { get; set; }
-    public int NumUtente { get; set; }
 
+    /// <summary>
+    /// Número do utente
+    /// </summary>
+    public int NumUtente { get; private set; }
+
+    #endregion
+
+    #region MÉTODOS
+
+    #region PROPRIEDADES
     #endregion
 
     #region CONSTRUTOR
@@ -22,5 +35,10 @@ public class Utente : Pessoa
     }
 
     #endregion
+
+    #endregion
+
+
+    
     
 }

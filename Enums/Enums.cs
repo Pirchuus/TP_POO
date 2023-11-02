@@ -22,4 +22,32 @@ namespace TP_POO.Enums
         Vila Nova de Famalicão,
         Barcelos
     };
+
+    public enum Funcao
+    {
+        Triagem,
+        Administração Medicamento,
+        Monitoramento Pacientes em observação,
+        Coordenação Cuidados,
+        Procedimento médicos
+    };
+
+    public enum Especialidade
+    {
+        Cari«diologia,
+        Medicina Geral,
+        Ortopedia,
+        Pediatria, 
+        Dermatologia,
+        Oncologia,
+        Psiquiatria,
+        Neurologia
+    };
+
+    public enum Gravidade
+    {
+        Pouco Grave,
+        Grave,
+        Muito Grave
+    };
 }

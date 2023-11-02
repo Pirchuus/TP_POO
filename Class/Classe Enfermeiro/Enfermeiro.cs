@@ -1,4 +1,6 @@
 ﻿using System;
+using Classe Pessoa.Pessoa;
+using TP_POO.Enums;
 
 /// <summary>
 /// Summary description for Enfermeiro
@@ -18,4 +20,23 @@ public class Enfermeiro : Pessoa
     public int NumRegistoEnf { get; set; }
 
     #endregion
+
+    #region MÉTODOS
+
+    #region PROPRIEDADES
+    #endregion
+
+    #region CONTRUTOR
+
+    public Enfermeiro()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
+
+    #endregion
+
+    #endregion
+
 }
