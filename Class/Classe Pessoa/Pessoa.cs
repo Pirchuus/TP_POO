@@ -10,9 +10,9 @@ public class Pessoa
 
     public string Nome { get; set; }
     public int NumTelemovel { get; set; }
-    public Genero genero { get; set; }
+    public Sexo Sexo { get; set; }
     public DateTime DataNascimento { get; set; }
-    public Cidade cidade { get; set; } 
+    public Cidade Cidade { get; set; } 
     public string CodigoPostal { get; set; } 
 
     #endregion
@@ -26,6 +26,7 @@ public class Pessoa
         //
         // TODO: Add constructor logic here
         //
+
     }
     #endregion
 

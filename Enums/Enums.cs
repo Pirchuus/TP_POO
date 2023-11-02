@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP_POO.Enums
 {
-    public enum Genero
+    public enum Sexo
     {
         Masculino,
         Feminino,
