@@ -13,6 +13,7 @@ public class Pessoa
     public Sexo Sexo { get; set; }
     public DateTime DataNascimento { get; set; }
     public Cidade Cidade { get; set; } 
+    public Sexo Genero { get; set; } 
     public string CodigoPostal { get; set; } 
 
     #endregion
