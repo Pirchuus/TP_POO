@@ -1,5 +1,5 @@
 using System;
-using Enum;
+using TP_POO.Enums;
 
 /// <summary>
 /// Summary description for Class1
