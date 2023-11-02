@@ -5,24 +5,17 @@
 /// </summary>
 public class Enfermeiro : Pessoa
 {
-
     #region ATRIBUTOS
 
-    public string Funcao { get; set; } // pode ser um enumerado talvez ????
+    /// <summary>
+    /// Atributo sobre a função que o enfermeiro exerce na urgência. Este é um enumerado
+    /// </summary>
+    public Funcao funcao { get; set; }
+
+    /// <summary>
+    /// Atributo do número de registo do enfermeiro, ou seja, o seu número de profissinal de saúde no hospital
+    /// </summary>
     public int NumRegistoEnf { get; set; }
 
     #endregion
-
-    #region CONSTRUTOR
-
-    public Enfermeiro()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
-
-    #endregion
-
-    
 }
