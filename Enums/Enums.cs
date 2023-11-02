@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace GeneroPessoa
 {
-    public enum Genero
+    public enum Enum
     {
         Masculino, Feminino
 
     };
+
+    public enum Cidades
     
 }
 
