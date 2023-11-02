@@ -4,13 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeneroPessoa
+namespace TP_POO.Enums
 {
     public enum Genero
     {
-        Masculino, Feminino
+        Masculino,
+        Feminino,
+    }
 
-    };
-    
+    public enum Cidade
+    {
+        Braga,
+        Porto,
+        Lisboa
+    }
 }
-

@@ -1,5 +1,5 @@
 using System;
-using GeneroPessoa;
+using TP_POO.Enums;
 
 /// <summary>
 /// Summary description for Class1
@@ -12,7 +12,7 @@ public class Pessoa
     public int NumTelemovel { get; set; }
     public Genero genero { get; set; }
     public DateTime DataNascimento { get; set; }
-    public Cidade Cidade { get; set; } 
+    public Cidade cidade { get; set; } 
     public string CodigoPostal { get; set; } 
 
     #endregion
