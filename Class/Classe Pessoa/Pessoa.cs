@@ -12,8 +12,7 @@ public class Pessoa
     public int NumTelemovel { get; set; }
     public Sexo Sexo { get; set; }
     public DateTime DataNascimento { get; set; }
-    public Cidade Cidade { get; set; } 
-    public Sexo Genero { get; set; } 
+    public Cidade cidade { get; set; } 
     public string CodigoPostal { get; set; } 
 
     #endregion

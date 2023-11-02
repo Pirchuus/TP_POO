@@ -10,12 +10,16 @@ namespace TP_POO.Enums
     {
         Masculino,
         Feminino,
-    }
+    
+    };
 
     public enum Cidade
     {
         Braga,
         Porto,
-        Lisboa
-    }
+        Lisboa,
+        Guimarães,
+        Vila Nova de Famalicão,
+        Barcelos
+    };
 }
