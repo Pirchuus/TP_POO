@@ -3,7 +3,7 @@ using System;
 /// <summary>
 /// Summary description for Class1
 /// </summary>
-public class Utente 
+public class Utente : Pessoa
 {
     #region ATRIBUTOS
 

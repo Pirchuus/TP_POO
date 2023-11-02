@@ -12,7 +12,7 @@ public class Pessoa
     public int NumTelemovel { get; set; }
     public Generos genero { get; set; }
     public DateTime DataNascimento { get; set; }
-    public Cidade Cidade { get; set; } 
+    public Cidades Cidade { get; set; } 
     public string CodigoPostal { get; set; } 
 
     #endregion

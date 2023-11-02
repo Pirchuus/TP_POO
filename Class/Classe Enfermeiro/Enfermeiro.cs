@@ -3,7 +3,7 @@
 /// <summary>
 /// Summary description for Enfermeiro
 /// </summary>
-public class Enfermeiro
+public class Enfermeiro : Pessoa
 {
 
     #region ATRIBUTOS

@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GeneroPessoa
+namespace TP_POO.Enums
 {
     public enum Enum
     {
-        Masculino, Feminino
+        Masculino,
+        Feminino,
 
     };
-
-    public enum Cidades
     
 }
-
