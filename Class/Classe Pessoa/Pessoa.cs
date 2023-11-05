@@ -30,7 +30,7 @@ public abstract class Pessoa
     /// <summary>
     /// Data de Nascimento da Pessoa
     /// </summary>
-    public DateOnly DataNascimento { get; set; }
+    private DateOnly DataNascimento { get; set; }
 
     /// <summary>
     /// Cidade de onde a pessoa é
@@ -54,22 +54,48 @@ public abstract class Pessoa
         set { Nome = value; }
     }
 
+    public DateOnly data
+    {
+        get { return DataNascimento}
+        set { DataNascimento = value; }
+    }
+
     #endregion
 
     #region CONSTRUTOR
-    public Pessoa()
+
+    public Pessoa(string Nome, DateOnly DataNascimento)
     {
-        //
-        // TODO: Add constructor logic here
-        //
+        this.Nome = Nome;
+        this.DataNascimento= DataNascimento;
 
     }
+
+    #endregion
+
+    #region DESTRUTOR
+
+    ~Pessoa()
+    {
+        Console.WriteLine($"A instância da classe para {DataNascimento} foi destruída");
+    }
+
+    #endregion
+
+    #region OUTROS MÉTODOS
+
+    public void ExibirInformacoes()
+    {
+        Console.WriteLine($"Nome: {Nome}");
+        Console.WriteLine($"Data de Nascimento: {DataNascimento}");
+    }
+
     #endregion
 
     #endregion
 
 
-    
 
-    
+
+
 }
