@@ -1,4 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TP_POO.Enums;
 
 /// <summary>
@@ -11,7 +15,7 @@ public abstract class Pessoa
     /// <summary>
     /// Atributo sobre o nome da pessoa
     /// </summary>
-    public string Nome { get; set; }
+    private string Nome { get; set; }
 
     /// <summary>
     /// Atributo do número de telemovel da pessoa
@@ -26,7 +30,7 @@ public abstract class Pessoa
     /// <summary>
     /// Data de Nascimento da Pessoa
     /// </summary>
-    public DateTime DataNascimento { get; set; }
+    public DateOnly DataNascimento { get; set; }
 
     /// <summary>
     /// Cidade de onde a pessoa é
@@ -43,6 +47,13 @@ public abstract class Pessoa
     #region MÉTODOS
 
     #region PROPRIEDADES
+
+    public string name
+    {
+        get { return Nome; }
+        set { Nome = value; }
+    }
+
     #endregion
 
     #region CONSTRUTOR
