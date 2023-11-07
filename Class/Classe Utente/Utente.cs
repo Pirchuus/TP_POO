@@ -34,7 +34,7 @@ public class Utente : Pessoa
 
     #region CONSTRUTOR
 
-    public Utente(string nome, int numTelemovel, Sexo sexo, DateOnly dataNascimento, Cidade cidade, string codigoPostal, int numUtente)
+    public Utente(string nome, int numTelemovel, Sexo sexo, DateTime dataNascimento, Cidade cidade, string codigoPostal, int numUtente)
         : base(nome, numTelemovel, sexo, dataNascimento, cidade, codigoPostal)
     {
         NumUtente = numUtente;

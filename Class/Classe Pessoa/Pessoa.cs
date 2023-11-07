@@ -15,7 +15,7 @@ public abstract class Pessoa
     /// <summary>
     /// Atributo sobre o nome da pessoa
     /// </summary>
-    private string Nome { get; set; }
+    public string Nome { get; set; }
 
     /// <summary>
     /// Atributo do número de telemovel da pessoa
@@ -30,7 +30,7 @@ public abstract class Pessoa
     /// <summary>
     /// Data de Nascimento da Pessoa
     /// </summary>
-    public DateOnly DataNascimento { get; set; }
+    public DateTime DataNascimento { get; set; }
 
     /// <summary>
     /// Cidade de onde a pessoa é
@@ -44,7 +44,11 @@ public abstract class Pessoa
 
     #endregion
 
-    protected Pessoa(string nome, int numTelemovel, Sexo sexo, DateOnly dataNascimento, Cidade cidade, string codigoPostal)
+    #region MÉTODOS
+
+    #region CONSTRUTOR
+
+    protected Pessoa(string nome, int numTelemovel, Sexo sexo, DateTime dataNascimento, Cidade cidade, string codigoPostal)
     {
         Nome = nome;
         NumTelemovel = numTelemovel;
@@ -53,4 +57,9 @@ public abstract class Pessoa
         Cidade = cidade;
         CodigoPostal = codigoPostal;
     }
+
+    #endregion
+
+    #endregion
+
 }

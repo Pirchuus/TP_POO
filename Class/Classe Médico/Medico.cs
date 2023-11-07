@@ -27,7 +27,7 @@ public class Medico : Pessoa
 
     #region CONSTRUTOR
 
-    public Medico(string nome, int numTelemovel, Sexo sexo, DateOnly dataNascimento, Cidade cidade, string codigoPostal, Especialidade especialidade, int numRegistoMedico)
+    public Medico(string nome, int numTelemovel, Sexo sexo, DateTime dataNascimento, Cidade cidade, string codigoPostal, Especialidade especialidade, int numRegistoMedico)
         : base(nome, numTelemovel, sexo, dataNascimento, cidade, codigoPostal)
     {
         this.especialidade = especialidade;
