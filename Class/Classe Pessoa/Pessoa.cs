@@ -1,4 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TP_POO.Enums;
 
 /// <summary>
@@ -11,7 +15,7 @@ public abstract class Pessoa
     /// <summary>
     /// Atributo sobre o nome da pessoa
     /// </summary>
-    public string Nome { get; set; }
+    private string Nome { get; set; }
 
     /// <summary>
     /// Atributo do número de telemovel da pessoa
