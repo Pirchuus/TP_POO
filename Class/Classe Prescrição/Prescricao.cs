@@ -41,9 +41,5 @@ public class Prescricao
     #endregion
 
     #endregion
-
-
-    
-
-    
+  
 }

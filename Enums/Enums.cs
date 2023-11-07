@@ -9,8 +9,7 @@ namespace TP_POO.Enums
     public enum Sexo
     {
         Masculino,
-        Feminino,
-    
+        Feminino
     };
 
     public enum Cidade
@@ -18,24 +17,24 @@ namespace TP_POO.Enums
         Braga,
         Porto,
         Lisboa,
-        Guimarães,
-        Vila Nova de Famalicão,
+        Guimaraes,
+        Famalicao,
         Barcelos
     };
 
     public enum Funcao
     {
         Triagem,
-        Administração Medicamento,
-        Monitoramento Pacientes em observação,
-        Coordenação Cuidados,
-        Procedimento médicos
+        AdministracaoMedicamento,
+        MonitoramentoPacientesObservacao,
+        CoordenacaoCuidados,
+        ProcedimentoMedicos
     };
 
     public enum Especialidade
     {
-        Cari«diologia,
-        Medicina Geral,
+        Cardiologia,
+        MedicinaGeral,
         Ortopedia,
         Pediatria, 
         Dermatologia,
@@ -46,8 +45,8 @@ namespace TP_POO.Enums
 
     public enum Gravidade
     {
-        Pouco Grave,
-        Grave,
-        Muito Grave
+        PoucoGrave = 1,
+        Grave = 2,
+        MuitoGrave = 3
     };
 }

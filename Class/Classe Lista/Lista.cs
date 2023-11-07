@@ -8,14 +8,10 @@ public class Lista
     #region ATRIBUTOS
 
     /// <summary>
-    /// Este atributo refere-se ao utente que esteja na lista de espera
+    /// Lista de utentes na lista de espera
     /// </summary>
-	public int UtenteEspera { get; set; }
+    public List<Utente> UtentesEspera { get; set; }
 
-    /// <summary>
-    /// Este atributo refere-se à prioridade que o utente apresenta na lista de espera
-    /// </summary>
-	public int Prioridade { get; set; }
 
     #endregion
 
@@ -27,17 +23,11 @@ public class Lista
     #region CONSTRUTOR
 
     public Lista()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    {
+        UtentesEspera = new List<Utente>();
+    }
 
     #endregion
 
     #endregion
-
-    
-
-   
 }

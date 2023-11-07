@@ -27,23 +27,33 @@ public class Triagem
 
     #region MÉTODOS
 
+    private int CalcularPrioridade()
+    {
+        int gravidadeValor = (int)gravidade;
+        
+        string[] sintomasArray = Sintomas.Split(',');
+        int numeroSintomas = sintomasArray.Length;
+
+        int prioridade = gravidadeValor + numeroSintomas;
+        
+        return prioridade;
+    }
+
     #region PROPRIEDADES
     #endregion
 
     #region CONSTRUTOR
 
-    public Triagem()
+    public Triagem(Gravidade gravidade, string sintomas)
     {
-        //
-        // TODO: Add constructor logic here
-        //
+        this.gravidade = gravidade;
+        Sintomas = sintomas;
+
+        Prioridade = CalcularPrioridade();
     }
 
     #endregion
 
     #endregion
 
-
-    
-    
 }

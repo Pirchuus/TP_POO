@@ -1,5 +1,4 @@
 ﻿using System;
-using Classe Pessoa.Pessoa;
 using TP_POO.Enums;
 
 /// <summary>
@@ -28,11 +27,12 @@ public class Enfermeiro : Pessoa
 
     #region CONTRUTOR
 
-    public Enfermeiro()
+    public Enfermeiro(string nome, int numTelemovel, Sexo sexo, DateTime dataNascimento, Cidade cidade, string codigoPostal, Funcao funcao, int numRegistoEnf)
+        : base(nome, numTelemovel, sexo, dataNascimento, cidade, codigoPostal)
     {
-        //
-        // TODO: Add constructor logic here
-        //
+        this.funcao = funcao;
+        NumRegistoEnf = numRegistoEnf;
+
     }
 
     #endregion

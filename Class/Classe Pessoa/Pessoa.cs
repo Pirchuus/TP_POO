@@ -26,12 +26,12 @@ public abstract class Pessoa
     /// <summary>
     /// Data de Nascimento da Pessoa
     /// </summary>
-    public DateTime DataNascimento { get; set; }
+    public DateOnly DataNascimento { get; set; }
 
     /// <summary>
     /// Cidade de onde a pessoa é
     /// </summary>
-    public Cidade cidade { get; set; } 
+    public Cidade Cidade { get; set; } 
 
     /// <summary>
     /// Código Postal da pessoa
@@ -40,25 +40,13 @@ public abstract class Pessoa
 
     #endregion
 
-    #region MÉTODOS
-
-    #region PROPRIEDADES
-    #endregion
-
-    #region CONSTRUTOR
-    public Pessoa()
+    protected Pessoa(string nome, int numTelemovel, Sexo sexo, DateOnly dataNascimento, Cidade cidade, string codigoPostal)
     {
-        //
-        // TODO: Add constructor logic here
-        //
-
+        Nome = nome;
+        NumTelemovel = numTelemovel;
+        Sexo = sexo;
+        DataNascimento = dataNascimento;
+        Cidade = cidade;
+        CodigoPostal = codigoPostal;
     }
-    #endregion
-
-    #endregion
-
-
-    
-
-    
 }
