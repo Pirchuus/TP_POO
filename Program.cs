@@ -8,8 +8,9 @@ namespace SistemaUrgencias
     {
         static void Main(string[] args)
         {
-            
-            Utente pessoa1 = new Utente("Joao", 123456789, Sexo.Masculino, , Cidade.Braga, "4700-400", 13);
+
+            DateTime dataNascimento = new DateTime(1990, 5, 15);
+            Utente pessoa1 = new Utente("Joao", 123456789, Sexo.Masculino, dataNascimento, Cidade.Braga, "4700-400", 13);
             pessoa1.ExibirInformacoes();
 
         }
