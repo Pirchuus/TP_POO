@@ -18,7 +18,7 @@ public class Utente : Pessoa
 
     #region MÉTODOS
 
-    public void ExibirInformacoes()
+    public void ExibirUtente()
     {
         Console.WriteLine($"Nome: {Nome}");
         Console.WriteLine($"Numero de Telemovel: {NumTelemovel}");

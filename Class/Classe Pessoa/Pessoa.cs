@@ -46,6 +46,16 @@ public abstract class Pessoa
 
     #region MÉTODOS
 
+    public void ExibirPessoa()
+    {
+        Console.WriteLine($"Nome: {Nome}");
+        Console.WriteLine($"Número de Telemóvel: {NumTelemovel}");
+        Console.WriteLine($"Sexo: {Sexo}");
+        Console.WriteLine($"Data de Nascimento: {DataNascimento}");
+        Console.WriteLine($"Cidade: {Cidade}");
+        Console.WriteLine($"Codigo Postal: {CodigoPostal}");
+    }
+
     #region CONSTRUTOR
 
     protected Pessoa(string nome, int numTelemovel, Sexo sexo, DateTime dataNascimento, Cidade cidade, string codigoPostal)

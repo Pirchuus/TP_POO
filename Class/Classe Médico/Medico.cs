@@ -22,6 +22,18 @@ public class Medico : Pessoa
 
     #region MÉTODOS
 
+    public void ExibirMedico()
+    {
+        Console.WriteLine($"Nome: {Nome}");
+        Console.WriteLine($"Número de Telemóvel: {NumTelemovel}");
+        Console.WriteLine($"Sexo: {Sexo}");
+        Console.WriteLine($"Data de Nascimento: {DataNascimento}");
+        Console.WriteLine($"Cidade: {Cidade}");
+        Console.WriteLine($"Codigo Postal: {CodigoPostal}");
+        Console.WriteLine($"Especialidade: {especialidade}");
+        Console.WriteLine($"Número de Registo Médico: {NumRegistoMedico}");
+    }
+
     #region PROPRIEDADES
     #endregion
 

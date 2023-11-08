@@ -26,16 +26,23 @@ public class RegistoClinico
 
     #region MÉTODOS
 
+    public void ExibirRegisto()
+    {
+        Console.WriteLine($"Diagnóstico: {Diagnostico}");
+        Console.WriteLine($"Exames: {Exames}");
+        Console.WriteLine($"Anotações: {Anotacoes}");
+    }
+
     #region PROPRIEDADES
     #endregion
 
     #region CONTRUTOR
 
-    public RegistoClinico()
+    public RegistoClinico( string diagnostico, string exames, string anotacoes)
     {
-        //
-        // TODO: Add constructor logic here
-        //
+        Diagnostico = diagnostico;
+        Exames = exames;
+        Anotacoes = anotacoes;  
     }
 
     #endregion

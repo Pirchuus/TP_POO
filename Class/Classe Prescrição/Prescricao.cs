@@ -26,16 +26,23 @@ public class Prescricao
 
     #region MÉTODOS
 
+    public void ExibirPrescricao()
+    {
+        Console.WriteLine($"Medicamento: {Medicamento}");
+        Console.WriteLine($"Dosagem: {Dosagem}");
+        Console.WriteLine($"Instruções: {Instrucoes}");
+    }
+
     #region PROPRIEDADES
     #endregion
 
     #region CONSTRUTOR
 
-    public Prescricao()
+    public Prescricao(string medicamento, double dosagem, string instrucoes)
     {
-        //
-        // TODO: Add constructor logic here
-        //
+        Medicamento = medicamento;
+        Dosagem = dosagem;
+        Instrucoes = instrucoes;
     }
 
     #endregion

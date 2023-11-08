@@ -39,6 +39,13 @@ public class Triagem
         return prioridade;
     }
 
+    public void ExibirTriagem()
+    {
+        Console.WriteLine($"Gravidade: {gravidade}");
+        Console.WriteLine($"Sintomas: {Sintomas}");
+        Console.WriteLine($"Prioridade: {Prioridade}");
+    }
+
     #region PROPRIEDADES
     #endregion
 
