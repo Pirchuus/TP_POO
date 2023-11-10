@@ -8,12 +8,15 @@ namespace SistemaUrgencias
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-            int op, op2;
+            int op;
             Utente[] utentes = new Utente[100]; // Initialize an array to store Utentes
             int index = 0; // Initialize the index for the Utentes array
 
+            do
+            { 
             Console.Clear();
             Console.WriteLine("--------------------------------------------------");
             Console.WriteLine("|                    Urgência                     |\n" +
@@ -42,6 +45,8 @@ namespace SistemaUrgencias
                     DateTime dataNascimento = new DateTime(1990, 5, 15);
                     Utente utente1 = new Utente("Joao", 123456789, Sexo.Masculino, dataNascimento, Cidade.Braga, "4700-400", 13);
                     utente1.ExibirUtente();
+                    Console.WriteLine();
+                    Console.WriteLine($"Pressione qualquer tecla para continuar...");
                     Console.ReadKey();
                     break;
                 case 2:
@@ -50,64 +55,76 @@ namespace SistemaUrgencias
                     DateTime dataNascimentoMedico = new DateTime(1987, 4, 4);
                     Medico medico1 = new Medico("Albertina", 654789231, Sexo.Feminino, dataNascimentoMedico, Cidade.Guimaraes, "4201-654", Especialidade.Cardiologia, 50);
                     medico1.ExibirMedico();
+                    Console.WriteLine();
+                    Console.WriteLine($"Pressione qualquer tecla para continuar...");
                     Console.ReadKey();
                     break;
                 case 3:
-                    Console.Clear();
-                    Console.WriteLine("--------------------------------------------------");
-                    Console.WriteLine("|                 Lista de Utentes                |\n");
-                    Console.WriteLine("--------------------------------------------------");
-                    Console.WriteLine("|  1 - Lista Utentes                              |");
-                    Console.WriteLine("|  2 - Adicionar Utentes                          |");
-                    Console.WriteLine("|  0 - Sair                                       |");
-                    Console.WriteLine("--------------------------------------------------");
-                    Console.WriteLine("\nEscolha uma opcao: ");
-                    op2 = int.Parse(Console.ReadLine());
-                    
-                    switch (op2)
+                    int op2;
+                    do
                     {
-                        case 0:
-                            System.Environment.Exit(0);
-                            break;
-                        case 1:
-                            MostrarUtentes(utentes);
-                            break;
-                        case 2:
-                            AdicionarUtente(utentes, ref index);
-                            break;
-                        default:
-                            Console.WriteLine("Opção inválida. Tente novamente.");
-                            break;
-                    }
-                    break;
+                        Console.Clear();
+                        Console.WriteLine("--------------------------------------------------");
+                        Console.WriteLine("|                 Lista de Utentes                |\n");
+                        Console.WriteLine("--------------------------------------------------");
+                        Console.WriteLine("|  1 - Lista Utentes                              |");
+                        Console.WriteLine("|  2 - Adicionar Utentes                          |");
+                        Console.WriteLine("|  0 - Sair                                       |");
+                        Console.WriteLine("--------------------------------------------------");
+                        Console.WriteLine("\nEscolha uma opcao: ");
+                        op2 = int.Parse(Console.ReadLine());
+                    
+                        switch (op2)
+                        {
+                            case 0:
+                                System.Environment.Exit(0);
+                                break;
+                            case 1:
+                                MostrarUtentes(utentes);
+                                break;
+                            case 2:
+                                AdicionarUtente(utentes, ref index);
+                                break;
+                            default:
+                                Console.WriteLine("Opção inválida. Tente novamente.");
+                                break;
+                            }
+                        } while (op2 != 0);
+                        break;
 
-                case 4:
-                    Console.Clear();
-                    Console.WriteLine("**************** Prescrição ****************");
-                    Prescricao prescricao1 = new Prescricao("Paracetamol", 1.5, "Tomar duas vezes ao dias, após refeições.");
-                    prescricao1.ExibirPrescricao();
-                    Console.ReadKey();
-                    break;
+                    case 4:
+                        Console.Clear();
+                        Console.WriteLine("**************** Prescrição ****************");
+                        Prescricao prescricao1 = new Prescricao("Paracetamol", 1.5, "Tomar duas vezes ao dias, após refeições.");
+                        prescricao1.ExibirPrescricao();
+                        Console.WriteLine();
+                        Console.WriteLine($"Pressione qualquer tecla para continuar...");
+                        Console.ReadKey();
+                        break;
 
-                case 5:
-                    Console.Clear();
-                    Console.WriteLine("**************** Registo Clínico ****************");
-                    RegistoClinico rclinico1 = new RegistoClinico("Frequência Cardíaca Alta", "Ecocardiografia", "Este utente têm frequência cardíaca alta, tensão alta.");
-                    rclinico1.ExibirRegisto();
-                    Console.ReadKey();
-                    break;
-                case 6:
-                    Console.Clear();
-                    Console.WriteLine("**************** Triagem ****************");
-                    Triagem tri1 = new Triagem(Gravidade.Grave, "Sensação de mal estar e fraqueza, desmaio frequente");
-                    tri1.ExibirTriagem();
-                    Console.ReadKey();
-                    break;
-                default:
-                    Console.WriteLine("Opção inválida. Tente novamente.");
-                    break;
-            }
-
+                    case 5:
+                        Console.Clear();
+                        Console.WriteLine("**************** Registo Clínico ****************");
+                        RegistoClinico rclinico1 = new RegistoClinico("Frequência Cardíaca Alta", "Ecocardiografia", "Este utente têm frequência cardíaca alta, tensão alta.");
+                        rclinico1.ExibirRegisto();
+                        Console.WriteLine();
+                        Console.WriteLine($"Pressione qualquer tecla para continuar...");
+                        Console.ReadKey();
+                        break;
+                    case 6:
+                        Console.Clear();
+                        Console.WriteLine("**************** Triagem ****************");
+                        Triagem tri1 = new Triagem(Gravidade.Grave, "Sensação de mal estar e fraqueza, desmaio frequente");
+                        tri1.ExibirTriagem();
+                        Console.WriteLine();
+                        Console.WriteLine($"Pressione qualquer tecla para continuar...");
+                        Console.ReadKey();
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida. Tente novamente.");
+                        break;
+                } 
+            } while (op != 0);
         }
 
         // Function to obtain a new Utente (patient) from user input
@@ -224,7 +241,7 @@ namespace SistemaUrgencias
                 }
             }
 
-            Console.WriteLine($"Pressione qualquer tecla para continuar...");
+            Console.WriteLine($"Pressione qualquer tecla para continuar..."); 
             Console.ReadKey();
         }
 
