@@ -77,7 +77,6 @@ namespace SistemaUrgencias
                         switch (op2)
                         {
                             case 0:
-                                System.Environment.Exit(0);
                                 break;
                             case 1:
                                 MostrarUtentes(utentes);
