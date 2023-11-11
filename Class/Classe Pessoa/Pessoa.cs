@@ -45,7 +45,6 @@ public abstract class Pessoa
     #endregion
 
     #region MÉTODOS
-
     public void ExibirPessoa()
     {
         Console.WriteLine($"Nome: {Nome}");
@@ -57,7 +56,6 @@ public abstract class Pessoa
     }
 
     #region CONSTRUTOR
-
     protected Pessoa(string nome, int numTelemovel, Sexo sexo, DateTime dataNascimento, Cidade cidade, string codigoPostal)
     {
         Nome = nome;
@@ -69,7 +67,5 @@ public abstract class Pessoa
     }
 
     #endregion
-
     #endregion
-
 }

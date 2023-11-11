@@ -34,11 +34,7 @@ public class Medico : Pessoa
         Console.WriteLine($"Número de Registo Médico: {NumRegistoMedico}");
     }
 
-    #region PROPRIEDADES
-    #endregion
-
     #region CONSTRUTOR
-
     public Medico(string nome, int numTelemovel, Sexo sexo, DateTime dataNascimento, Cidade cidade, string codigoPostal, Especialidade especialidade, int numRegistoMedico)
         : base(nome, numTelemovel, sexo, dataNascimento, cidade, codigoPostal)
     {
@@ -47,6 +43,5 @@ public class Medico : Pessoa
     }
 
     #endregion
-
     #endregion
 }

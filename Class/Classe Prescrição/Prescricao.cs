@@ -25,7 +25,6 @@ public class Prescricao
     #endregion
 
     #region MÉTODOS
-
     public void ExibirPrescricao()
     {
         Console.WriteLine($"Medicamento: {Medicamento}");
@@ -33,11 +32,7 @@ public class Prescricao
         Console.WriteLine($"Instruções: {Instrucoes}");
     }
 
-    #region PROPRIEDADES
-    #endregion
-
     #region CONSTRUTOR
-
     public Prescricao(string medicamento, double dosagem, string instrucoes)
     {
         Medicamento = medicamento;
@@ -46,7 +41,5 @@ public class Prescricao
     }
 
     #endregion
-
     #endregion
-  
 }

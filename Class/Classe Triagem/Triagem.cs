@@ -7,7 +7,6 @@ using TP_POO.Enums;
 public class Triagem
 {
     #region ATRIBUTOS
-
     /// <summary>
     /// Gravidade do mau estar do utente
     /// </summary>
@@ -26,7 +25,6 @@ public class Triagem
     #endregion
 
     #region MÉTODOS
-
     private int CalcularPrioridade()
     {
         int gravidadeValor = (int)gravidade;
@@ -46,11 +44,7 @@ public class Triagem
         Console.WriteLine($"Prioridade: {Prioridade}");
     }
 
-    #region PROPRIEDADES
-    #endregion
-
     #region CONSTRUTOR
-
     public Triagem(Gravidade gravidade, string sintomas)
     {
         this.gravidade = gravidade;
@@ -60,7 +54,5 @@ public class Triagem
     }
 
     #endregion
-
     #endregion
-
 }

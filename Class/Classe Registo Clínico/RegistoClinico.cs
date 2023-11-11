@@ -6,7 +6,6 @@ using System;
 public class RegistoClinico
 {
     #region ATRIBUTOS
-
     /// <summary>
     /// Atributo do diagnóstico do paciente registado no registo clínico
     /// </summary>
@@ -25,7 +24,6 @@ public class RegistoClinico
     #endregion
 
     #region MÉTODOS
-
     public void ExibirRegisto()
     {
         Console.WriteLine($"Diagnóstico: {Diagnostico}");
@@ -33,11 +31,7 @@ public class RegistoClinico
         Console.WriteLine($"Anotações: {Anotacoes}");
     }
 
-    #region PROPRIEDADES
-    #endregion
-
     #region CONTRUTOR
-
     public RegistoClinico( string diagnostico, string exames, string anotacoes)
     {
         Diagnostico = diagnostico;
@@ -46,6 +40,5 @@ public class RegistoClinico
     }
 
     #endregion
-
     #endregion
 }

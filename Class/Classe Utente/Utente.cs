@@ -7,17 +7,13 @@ using TP_POO.Enums;
 public class Utente : Pessoa
 {
     #region ATRIBUTOS
-
     /// <summary>
     /// Número do utente
     /// </summary>
     public int NumUtente { get; private set; }
-
-
     #endregion
 
     #region MÉTODOS
-
     public void ExibirUtente()
     {
         Console.WriteLine($"Nome: {Nome}");
@@ -29,11 +25,7 @@ public class Utente : Pessoa
         Console.WriteLine($"Numero de Utente: {NumUtente}");
     }
 
-    #region PROPRIEDADES
-    #endregion
-
     #region CONSTRUTOR
-
     public Utente(string nome, int numTelemovel, Sexo sexo, DateTime dataNascimento, Cidade cidade, string codigoPostal, int numUtente)
         : base(nome, numTelemovel, sexo, dataNascimento, cidade, codigoPostal)
     {
@@ -41,6 +33,5 @@ public class Utente : Pessoa
     }
 
     #endregion
-
     #endregion
 }

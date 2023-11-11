@@ -17,17 +17,12 @@ public class Lista
 
     #region MÉTODOS
 
-    #region PROPRIEDADES
-    #endregion
-
     #region CONSTRUTOR
-
     public Lista()
     {
         UtentesEspera = new List<Utente>();
     }
 
     #endregion
-
     #endregion
 }
