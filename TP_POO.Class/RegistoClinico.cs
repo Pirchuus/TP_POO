@@ -23,6 +23,8 @@ namespace TP_POO.Class
         #endregion
 
         #region MÉTODOS
+
+        // Método para exibir as informações de um registo clínico
         public void ExibirRegisto()
         {
             Console.WriteLine($"Diagnóstico: {Diagnostico}");

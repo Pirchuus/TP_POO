@@ -24,6 +24,8 @@ namespace TP_POO.Class
         #endregion
 
         #region MÉTODOS
+
+        // Método para exibir o que foi feito na prescrição.
         public void ExibirPrescricao()
         {
             Console.WriteLine($"Medicamento: {Medicamento}");

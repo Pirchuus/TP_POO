@@ -7,13 +7,13 @@ namespace TP_POO.Class
     {
         #region ATRIBUTOS
         /// <summary>
-        /// Lista de utentes na lista de espera
+        /// Lista de utentes, ou seja, lista de espera dos utentes
         /// </summary>
         public List<Utente> UtentesEspera { get; set; }
         #endregion
 
         #region MÉTODOS
-        // Function to list Utentes
+        // Função da Lista de Utentes
         public void MostrarUtentes(List<Utente> utentes)
         {
             Console.Clear();
@@ -47,7 +47,7 @@ namespace TP_POO.Class
         }
 
 
-        // Function to add Utentes
+        // Funçaõ para Adicoonar os utentes
         public void AdicionarUtente()
         {
             Utente novoUtente = Utente.ObterUtente();

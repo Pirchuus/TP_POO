@@ -21,6 +21,7 @@ namespace TP_POO.Class
 
         #region MÉTODOS
 
+        // Método para Exibir as informações do médico
         public void ExibirMedico()
         {
             Console.WriteLine($"Nome: {Nome}");

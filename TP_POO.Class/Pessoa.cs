@@ -40,6 +40,9 @@ namespace TP_POO.Class
         #endregion
 
         #region MÉTODOS
+
+        // Método para exibir as informações de uma pessoa, que neste projeto,
+        // estas informações irão utilizadas nas classes referentes ao médico e utente
         public void ExibirPessoa()
         {
             Console.WriteLine($"Nome: {Nome}");

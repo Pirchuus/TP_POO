@@ -36,6 +36,7 @@ namespace TP_POO.Class
             return prioridade;
         }
 
+        // Método para exibir as informações que se realizaram numa triagem
         public void ExibirTriagem()
         {
             Console.WriteLine($"Gravidade: {gravidade}");
