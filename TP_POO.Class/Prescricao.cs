@@ -2,22 +2,25 @@ using System;
 
 namespace TP_POO.Class
 {
+    /// <summary>
+    /// Represents a prescription made by a doctor for a patient.
+    /// </summary>
     public class Prescricao
     {
         #region ATRIBUTOS
 
         /// <summary>
-        /// Medicamento presente na prescição que o médico realizou aquele utente
+        /// Medication included in the prescription made by the doctor for the patient.
         /// </summary>
         public string Medicamento { get; set; }
 
         /// <summary>
-        /// Dosagem passada para o utente daquele(s) medicamento(s) que lhe foi prescrito
+        /// Dosage prescribed for the patient for the medication(s).
         /// </summary>
         public double Dosagem { get; set; }
 
         /// <summary>
-        /// Instruções corretas para que o utente tome o medicamento de forma certa
+        /// Correct instructions for the patient to take the medication properly.
         /// </summary>
         public string Instrucoes { get; set; }
 
@@ -25,7 +28,9 @@ namespace TP_POO.Class
 
         #region MÉTODOS
 
-        // Método para exibir o que foi feito na prescrição.
+        /// <summary>
+        /// Displays the information of the prescription.
+        /// </summary>
         public void ExibirPrescricao()
         {
             Console.WriteLine($"Medicamento: {Medicamento}");
@@ -34,6 +39,13 @@ namespace TP_POO.Class
         }
 
         #region CONSTRUTOR
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Prescricao"/> class.
+        /// </summary>
+        /// <param name="medicamento">The medication in the prescription.</param>
+        /// <param name="dosagem">The dosage prescribed.</param>
+        /// <param name="instrucoes">Instructions for taking the medication.</param>
         public Prescricao(string medicamento, double dosagem, string instrucoes)
         {
             Medicamento = medicamento;

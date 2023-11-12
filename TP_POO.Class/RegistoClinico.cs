@@ -2,21 +2,24 @@ using System;
 
 namespace TP_POO.Class
 {
+    /// <summary>
+    /// Represents a clinical record for a patient.
+    /// </summary>
     public class RegistoClinico
     {
         #region ATRIBUTOS
         /// <summary>
-        /// Atributo do diagnóstico do paciente registado no registo clínico
+        /// Attribute representing the diagnosis of the patient recorded in the clinical record.
         /// </summary>
         public string Diagnostico { get; set; }
 
         /// <summary>
-        /// Atributo dos Exames que estão no registo clínico
+        /// Attribute representing the examinations in the clinical record.
         /// </summary>
         public string Exames { get; set; }
 
         /// <summary>
-        /// Atributo das anotações feitas pelo médico no registo clínnico de um determinado paciente
+        /// Attribute representing the annotations made by the doctor in the clinical record of a specific patient.
         /// </summary>
         public string Anotacoes { get; set; }
 
@@ -24,7 +27,9 @@ namespace TP_POO.Class
 
         #region MÉTODOS
 
-        // Método para exibir as informações de um registo clínico
+        /// <summary>
+        /// Displays the information of a clinical record.
+        /// </summary>
         public void ExibirRegisto()
         {
             Console.WriteLine($"Diagnóstico: {Diagnostico}");
@@ -33,6 +38,13 @@ namespace TP_POO.Class
         }
 
         #region CONTRUTOR
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegistoClinico"/> class.
+        /// </summary>
+        /// <param name="diagnostico">The diagnosis of the patient.</param>
+        /// <param name="exames">The examinations in the clinical record.</param>
+        /// <param name="anotacoes">The annotations made by the doctor.</param>
         public RegistoClinico(string diagnostico, string exames, string anotacoes)
         {
             Diagnostico = diagnostico;

@@ -5,16 +5,22 @@ using CidadeEnum = TP_POO.Enums.Cidade;
 
 namespace TP_POO.Class
 {
+    /// <summary>
+    /// Represents a patient in the system.
+    /// </summary>
     public class Utente : Pessoa
     {
         #region ATRIBUTOS
         /// <summary>
-        /// Número do utente
+        /// Patient's identification number.
         /// </summary>
         public int NumUtente { get; private set; }
         #endregion
 
         #region MÉTODOS
+        /// <summary>
+        /// Displays the information of a patient.
+        /// </summary>
         public void ExibirUtente()
         {
             Console.WriteLine($"Nome: {Nome}");
@@ -26,6 +32,10 @@ namespace TP_POO.Class
             Console.WriteLine($"Numero de Utente: {NumUtente}");
         }
 
+        /// <summary>
+        /// Obtains information from the console to create a new patient object.
+        /// </summary>
+        /// <returns>The newly created Utente object or null if data is invalid.</returns>
         public static Utente ObterUtente()
         {
             Console.Clear();
@@ -79,6 +89,16 @@ namespace TP_POO.Class
         }
 
         #region CONSTRUTOR
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Utente"/> class.
+        /// </summary>
+        /// <param name="nome">The name of the patient.</param>
+        /// <param name="numTelemovel">The mobile phone number of the patient.</param>
+        /// <param name="sexo">The gender of the patient.</param>
+        /// <param name="dataNascimento">The birthdate of the patient.</param>
+        /// <param name="cidade">The city of the patient.</param>
+        /// <param name="codigoPostal">The postal code of the patient.</param>
+        /// <param name="numUtente">The identification number of the patient.</param>
         public Utente(string nome, int numTelemovel, Sexo sexo, DateTime dataNascimento, Cidade cidade, string codigoPostal, int numUtente)
             : base(nome, numTelemovel, sexo, dataNascimento, cidade, codigoPostal)
         {
@@ -88,5 +108,4 @@ namespace TP_POO.Class
         #endregion
         #endregion
     }
-
 }

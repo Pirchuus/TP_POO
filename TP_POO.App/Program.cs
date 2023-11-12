@@ -4,6 +4,9 @@ using TP_POO.Class;
 
 namespace SistemaUrgencias
 {
+    /// <summary>
+    /// Main program class for managing an emergency system.
+    /// </summary>
     class Program
     {
         static void Main(string[] args)

@@ -3,17 +3,23 @@ using System.Collections.Generic;
 
 namespace TP_POO.Class
 {
+    /// <summary>
+    /// Represents a list of patients in a waiting list.
+    /// </summary>
     public class Lista
     {
         #region ATRIBUTOS
         /// <summary>
-        /// Lista de utentes, ou seja, lista de espera dos utentes
+        /// List of patients, i.e., waiting list of patients.
         /// </summary>
         public List<Utente> UtentesEspera { get; set; }
         #endregion
 
         #region MÉTODOS
-        // Função da Lista de Utentes
+        /// <summary>
+        /// Displays the list of patients.
+        /// </summary>
+        /// <param name="utentes">The list of patients to display.</param>
         public void MostrarUtentes(List<Utente> utentes)
         {
             Console.Clear();
@@ -21,7 +27,7 @@ namespace TP_POO.Class
 
             if (utentes.Count == 0)
             {
-                Console.WriteLine($"Nenhum Utente cadastrado.");
+                Console.WriteLine($"Nenhum Utente registado.");
             }
             else
             {
@@ -47,7 +53,9 @@ namespace TP_POO.Class
         }
 
 
-        // Funçaõ para Adicoonar os utentes
+        /// <summary>
+        /// Adds a new patient to the waiting list.
+        /// </summary>
         public void AdicionarUtente()
         {
             Utente novoUtente = Utente.ObterUtente();
@@ -70,6 +78,9 @@ namespace TP_POO.Class
 
 
         #region CONSTRUTOR
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Lista"/> class.
+        /// </summary>
         public Lista()
         {
             UtentesEspera = new List<Utente>();

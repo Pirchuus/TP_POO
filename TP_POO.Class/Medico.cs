@@ -3,17 +3,20 @@ using TP_POO.Enums;
 
 namespace TP_POO.Class
 {
+    /// <summary>
+    /// Represents a medical professional.
+    /// </summary>
     public class Medico : Pessoa
     {
         #region ATRIBUTOS
 
         /// <summary>
-        /// Atributo sobre a especialidade a que o médico pertence, sendo este um enumerado.
+        /// Attribute representing the specialty to which the doctor belongs, defined as an enumeration.
         /// </summary>
         public Especialidade especialidade { get; set; }
 
         /// <summary>
-        /// Atributo referente ao número de registo do médico, ou seja, o número do profissional de saúde do hospital
+        /// Attribute representing the doctor's registration number, i.e., the health professional number in the hospital.
         /// </summary>
         public int NumRegistoMedico { get; private set; }
 
@@ -21,7 +24,9 @@ namespace TP_POO.Class
 
         #region MÉTODOS
 
-        // Método para Exibir as informações do médico
+        /// <summary>
+        /// Displays the information of the doctor.
+        /// </summary>
         public void ExibirMedico()
         {
             Console.WriteLine($"Nome: {Nome}");
@@ -35,6 +40,18 @@ namespace TP_POO.Class
         }
 
         #region CONSTRUTOR
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Medico"/> class.
+        /// </summary>
+        /// <param name="nome">The name of the doctor.</param>
+        /// <param name="numTelemovel">The mobile phone number of the doctor.</param>
+        /// <param name="sexo">The gender of the doctor.</param>
+        /// <param name="dataNascimento">The birthdate of the doctor.</param>
+        /// <param name="cidade">The city of the doctor.</param>
+        /// <param name="codigoPostal">The postal code of the doctor.</param>
+        /// <param name="especialidade">The specialty of the doctor.</param>
+        /// <param name="numRegistoMedico">The registration number of the doctor.</param>
         public Medico(string nome, int numTelemovel, Sexo sexo, DateTime dataNascimento, Cidade cidade, string codigoPostal, Especialidade especialidade, int numRegistoMedico)
             : base(nome, numTelemovel, sexo, dataNascimento, cidade, codigoPostal)
         {
