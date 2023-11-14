@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP_POO.Dados
 {
-    internal class Triagens
+    public class Triagens
     {
     }
 }

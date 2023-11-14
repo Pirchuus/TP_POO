@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TP_POO.Class;
+using TP_POO.Enums;
 
 namespace TP_POO.Dados
 {
-    internal class Prescricoes
+    public class Prescricoes
     {
     }
 }

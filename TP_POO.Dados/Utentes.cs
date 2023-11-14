@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP_POO.Dados
 {
-    internal class Utentes
+    public class Utentes
     {
     }
 }
