@@ -3,58 +3,73 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TP_POO.Enums;
 using TP_POO.Class;
 
 namespace TP_POO.Dados
 {
     public class RegistosClinicos
     {
-        #region MÉTODOS
-        /// Variáveis
+        /// <summary>
+        /// List of clinical records.
+        /// </summary>
         List<RegistoClinico> registoClinicos = new List<RegistoClinico>();
 
+        #region CONSTRUTOR
         /// <summary>
-        /// Construtor
+        /// Constructor of the class RegistosClinicos.
         /// </summary>
         public RegistosClinicos()
         {
             registoClinicos.Add(new RegistoClinico
             {
-                Diagnostico = new Diagnostico("Tem um braço partido e uma fratura na perna"),
-                Exames = new Exames("Precisa de fazer um raio-x em ambos os membros"),
-                Anotacoes = new Anotacoes("É um utente com diabetes.")
-
+                Diagnostico = "Tem um braço partido e uma fratura na perna",
+                Exames = "Raio-x 2 Membros",
+                Anotacoes = "É um utente com diabetes.",
+                Utente = new Utente
+                {
+                    Nome = "Maria Joao",
+                    DataNascimento = new DateOnly(1990, 10, 10),
+                    Sexo = Sexo.Feminino,
+                    NumTelemovel = 912345678,
+                    Cidade = Cidade.Porto,
+                    CodigoPostal = "4000-007"
+                }
             });
         }
+        #endregion
 
+        #region METODOS
         ///<summary>
-        /// Adicionar novo registo clínico
+        /// Method that adds a clinical record to the list.
         ///<summary>
         ///<param name="novoRegistoClinico">novo registo clinico</param>
-        public void Add(RegistoClinico novoRegistoClinico)
+        public void AddRegisto(RegistoClinico novoRegistoClinico)
         {
-            // adiciona o registo clínico
             this.registoClinicos.Add(novoRegistoClinico);
         }
 
-        ///<summary>
-        /// Lista Registos Clinicos
-        ///<summary>
-        ///<param name="registoClinicos">registos clinicos</param>
-        public void ListarRegistosClinicos(List<RegistoClinico> registoClinicos)
+        /// <summary>
+        /// Method that removes a clinical record from the list.
+        /// </summary>
+        /// <param name="registoClinico"></param>
+        public void RemoveRegisto(RegistoClinico registoClinico)
         {
-            foreach (RegistoClinico registoClinico in registoClinicos)
-                Console.WriteLine(registoClinico.ToString());
+            this.registoClinicos.Remove(registoClinico);
         }
 
-        ///<summary>
-        /// Listar todos os registos clínicos
-        ///<summary>
-        ///<param name="registosClinicos">registos clinicos</param>
-        public void ListaRegistosTodos(List<RegistoClinico> registosClinicos) => ListarRegistosClinicos(registosClinicos);
-
+        /// <summary>
+        /// Method that updates the information of a clinical record.
+        /// </summary>
+        /// <param name="registoClinico"></param>
+        public void UpdateRegisto(RegistoClinico registoClinico)
+        {
+            int index = registoClinicos.FindIndex(r => r.NumeroRegisto == registoClinico.NumeroRegisto);
+            if (index != -1)
+            {
+                registoClinicos[index] = registoClinico;
+            }
+        }
         #endregion
-
-
     }
 }

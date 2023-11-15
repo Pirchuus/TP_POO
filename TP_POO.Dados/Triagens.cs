@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TP_POO.Enums;
 using TP_POO.Class;
 
 namespace TP_POO.Dados
 {
     public class Triagens
     {
-
-        #region MÉTODOS
-
-        //Variáveis
+        /// <summary>
+        /// List of triages.
+        /// </summary>
         List<Triagem> triagens = new List<Triagem>();
 
+        #region CONSTRUTOR
         /// <summary>
         /// Construtor
         /// </summary>
@@ -22,54 +23,73 @@ namespace TP_POO.Dados
         {
             triagens.Add(new Triagem
             {
-                gravidade = Enums.Gravidade.MuitoGrave,
-                Sintomas = new Sintomas("Tem dores no braço e na perna. Apresenta-se com tonturas."),
-                Prioridade = CalcularPrioridade(),
+                Gravidade = Enums.Gravidade.Grave,
+                Sintomas = "Tem dores no braço e na perna. Apresenta-se com tonturas.",
+                Prioridade = CalcularPrioridade(Enums.Gravidade.Grave, "Dor perna, braço e tonturas" ),
             });
         }
+        #endregion
 
+        #region MÉTODOS
         /// <summary>
         /// Calculates the priority of the patient based on severity and symptoms.
         /// </summary>
         /// <returns>The calculated priority value.</returns>
-        private int CalcularPrioridade()
+        private int CalcularPrioridade(Enums.Gravidade gravidade, string sintomas)
         {
-            int gravidadeValor = (int)gravidade;
+            int priority = 0;
 
-            string[] sintomasArray = Sintomas.Split(',');
-            int numeroSintomas = sintomasArray.Length;
+            // Assign priority based on severity
+            switch (gravidade)
+            {
+                case Enums.Gravidade.PoucoGrave:
+                    priority += 1;
+                    break;
+                case Enums.Gravidade.Grave:
+                    priority += 2;
+                    break;
+                case Enums.Gravidade.MuitoGrave:
+                    priority += 3;
+                    break;
+            }
+            if (sintomas.Contains(""))
+            {
+                priority += 1;
+            }
 
-            int prioridade = gravidadeValor + numeroSintomas;
-
-            return prioridade;
+            return priority;
         }
 
         ///<summary>
-        /// Adicionar nova triagem
+        /// Method that adds a triage to the list.
         ///<summary>
         ///<param name="novoTriagem">nova triagem</param>
-        public void Add(Triagem novaTriagem)
+        public void AddTriagem(Triagem novaTriagem)
         {
-            this.triagems.Add(novaTriagem);
+            this.triagens.Add(novaTriagem);
         }
 
-        ///<summary>
-        /// Lista Triagens
-        ///<summary>
-        ///<param name="triagems">triagens</param>
-        public void ListarTriagens(List<Triagem> triagems)
+        /// <summary>
+        /// Method that removes a triage from the list.
+        /// </summary>
+        /// <param name="triagem"></param>
+        public void RemoveTriagem(Triagem triagem)
         {
-            foreach (Triagem triagem in triagems)
-                Console.WriteLine(triagems.ToString());
+            this.triagens.Remove(triagem);
         }
 
-        ///<summary>
-        /// Listar todas as triagens
-        ///<summary>
-        ///<param name="triagens">triagens</param>
-        public void ListarTriagensTodas(List<Triagem> triagens) => ListarTriagens(triagens);
-
+        /// <summary>
+        /// Method that updates a triage from the list.
+        /// </summary>
+        /// <param name="triagem"></param>
+        public void UpdateTriagem(Triagem triagem)
+        {
+            int index = this.triagens.IndexOf(triagem);
+            if (index != -1) 
+            {
+                this.triagens[index] = triagem;
+            }
+        }
         #endregion
-
     }
 }
