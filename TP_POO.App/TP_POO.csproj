@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TP_POO.Class\TP_POO.Class.csproj" />
+    <ProjectReference Include="..\TP_POO.Dados\TP_POO.Dados.csproj" />
     <ProjectReference Include="..\TP_POO.Enums\TP_POO.Enums.csproj" />
   </ItemGroup>
 
