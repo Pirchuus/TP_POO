@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TP_POO.Enums;
-
 namespace TP_POO.Class
 {
     /// <summary>
@@ -8,11 +11,19 @@ namespace TP_POO.Class
     /// </summary>
     public class Triagem
     {
+        // Variable.
+        private int idTriagem = 100;
+
         #region ATRIBUTOS
+        /// <summary>
+        /// Attribute representing the triage process number.
+        /// </summary>
+        public int IdTriagem { get; private set; }
+
         /// <summary>
         /// Severity of the patient's discomfort.
         /// </summary>
-        public Gravidade gravidade { get; set; }
+        public Gravidade Gravidade { get; set; }
 
         /// <summary>
         /// Symptoms presented by the patient.
@@ -28,21 +39,23 @@ namespace TP_POO.Class
 
         #region MÉTODOS
 
-        #region OVERRIDES
-
+        #region CONSTRUTOR
         /// <summary>
-        /// Override do Método ToString
+        /// Constructor for the triage process.
+        /// </summary>
+        public Triagem() => this.IdTriagem = idTriagem++;
+        #endregion
+
+        #region OVERRIDES
+        /// <summary>
+        /// Overrides the ToString() method.
         /// </summary>
         /// <returns></returns>
-        public override string ToString() => $"\tGravidade: {this.gravidade}\n" +
+        public override string ToString() => 
+            $"\tGravidade: {this.Gravidade}\n" +
             $"Sintomas: {this.Sintomas}\n" +
             $"Prioridade: {this.Prioridade}";
-
         #endregion
-
         #endregion
-
-
-
     }
 }

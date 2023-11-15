@@ -1,4 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TP_POO.Enums;
 
 namespace TP_POO.Class
 {
@@ -7,7 +12,14 @@ namespace TP_POO.Class
     /// </summary>
     public class Prescricao
     {
+        // Variable
+        private int idMedicamento = 100;
+
         #region ATRIBUTOS
+        /// <summary>
+        /// Prescription ID.
+        /// </summary>
+        public int IdMedicamento { get; private set; }
 
         /// <summary>
         /// Medication included in the prescription made by the doctor for the patient.
@@ -23,36 +35,27 @@ namespace TP_POO.Class
         /// Correct instructions for the patient to take the medication properly.
         /// </summary>
         public string Instrucoes { get; set; }
-
         #endregion
 
         #region MÉTODOS
-
-        /// <summary>
-        /// Displays the information of the prescription.
-        /// </summary>
-        public void ExibirPrescricao()
-        {
-            Console.WriteLine($"Medicamento: {Medicamento}");
-            Console.WriteLine($"Dosagem: {Dosagem}");
-            Console.WriteLine($"Instruções: {Instrucoes}");
-        }
-
+        
         #region CONSTRUTOR
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="Prescricao"/> class.
+        /// Constructor for the prescription.
         /// </summary>
-        /// <param name="medicamento">The medication in the prescription.</param>
-        /// <param name="dosagem">The dosage prescribed.</param>
-        /// <param name="instrucoes">Instructions for taking the medication.</param>
-        public Prescricao(string medicamento, double dosagem, string instrucoes)
-        {
-            Medicamento = medicamento;
-            Dosagem = dosagem;
-            Instrucoes = instrucoes;
-        }
+        public Prescricao() => this.IdMedicamento = idMedicamento++;
+        #endregion
 
+        #region OVERRIDES
+        /// <summary>
+        /// Override of the ToString() method.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() => 
+            $"ID: {IdMedicamento}\n" +
+            $"Medicamento: {Medicamento}\n" +
+            $"Dosagem: {Dosagem}\n" +
+            $"Instruções: {Instrucoes}";
         #endregion
         #endregion
     }

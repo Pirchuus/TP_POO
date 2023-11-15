@@ -1,4 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TP_POO.Enums;
 
 namespace TP_POO.Class
@@ -9,7 +13,6 @@ namespace TP_POO.Class
     public abstract class Pessoa
     {
         #region ATRIBUTOS
-
         /// <summary>
         /// Attribute representing the name of the person.
         /// </summary>
@@ -28,7 +31,7 @@ namespace TP_POO.Class
         /// <summary>
         /// Date of birth of the person.
         /// </summary>
-        public DateTime DataNascimento { get; set; }
+        public DateOnly DataNascimento { get; set; }
 
         /// <summary>
         /// City where the person is from.
@@ -39,46 +42,6 @@ namespace TP_POO.Class
         /// Postal code of the person.
         /// </summary>
         public string CodigoPostal { get; set; }
-
-        #endregion
-
-        #region MÉTODOS
-
-        /// <summary>
-        /// Displays the information of a person.
-        /// </summary>
-        public void ExibirPessoa()
-        {
-            Console.WriteLine($"Nome: {Nome}");
-            Console.WriteLine($"Número de Telemóvel: {NumTelemovel}");
-            Console.WriteLine($"Sexo: {Sexo}");
-            Console.WriteLine($"Data de Nascimento: {DataNascimento}");
-            Console.WriteLine($"Cidade: {Cidade}");
-            Console.WriteLine($"Codigo Postal: {CodigoPostal}");
-        }
-
-        #region CONSTRUTOR
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Pessoa"/> class.
-        /// </summary>
-        /// <param name="nome">The name of the person.</param>
-        /// <param name="numTelemovel">The mobile phone number of the person.</param>
-        /// <param name="sexo">The gender of the person.</param>
-        /// <param name="dataNascimento">The birthdate of the person.</param>
-        /// <param name="cidade">The city of the person.</param>
-        /// <param name="codigoPostal">The postal code of the person.</param>
-        protected Pessoa(string nome, int numTelemovel, Sexo sexo, DateTime dataNascimento, Cidade cidade, string codigoPostal)
-        {
-            Nome = nome;
-            NumTelemovel = numTelemovel;
-            Sexo = sexo;
-            DataNascimento = dataNascimento;
-            Cidade = cidade;
-            CodigoPostal = codigoPostal;
-        }
-
-        #endregion
         #endregion
     }
 }

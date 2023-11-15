@@ -1,4 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TP_POO.Enums;
 
 namespace TP_POO.Class
 {
@@ -7,7 +12,15 @@ namespace TP_POO.Class
     /// </summary>
     public class RegistoClinico
     {
+        // Variable.
+        private int numeroRegisto = 500;
+
         #region ATRIBUTOS
+        /// <summary>
+        /// Attribute representing the clinical record number.
+        /// </summary>
+        public int NumeroRegisto { get; private set; }
+
         /// <summary>
         /// Attribute representing the diagnosis of the patient recorded in the clinical record.
         /// </summary>
@@ -23,23 +36,33 @@ namespace TP_POO.Class
         /// </summary>
         public string Anotacoes { get; set; }
 
+        /// <summary>
+        /// Attribute representing the patient of the clinical record.
+        /// </summary>
+        public Utente Utente { get; set; }
+
         #endregion
 
         #region MÉTODOS
 
-        #region OVERRIDES
-
+        #region CONSTRUTOR
         /// <summary>
-        /// Override do Método ToString
+        /// Constructor for the clinical record.
+        /// </summary>
+        public RegistoClinico() => this.NumeroRegisto = numeroRegisto++;
+        #endregion
+
+        #region OVERRIDES
+        /// <summary>
+        /// Override of the ToString() method.
         /// </summary>
         /// <returns></returns>
-        public override string ToString() => $"Diagnostico: {this.Diagnostico}\n" +
+        public override string ToString() => 
+            $"Diagnostico: {this.Diagnostico}\n" +
             $"Exames: {this.Exames}\n" +
             $"Anotacoes: {this.Anotacoes}\n";
 
         #endregion
-
         #endregion
-
     }
 }
