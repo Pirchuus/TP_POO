@@ -27,32 +27,19 @@ namespace TP_POO.Class
 
         #region MÉTODOS
 
-        /// <summary>
-        /// Displays the information of a clinical record.
-        /// </summary>
-        public void ExibirRegisto()
-        {
-            Console.WriteLine($"Diagnóstico: {Diagnostico}");
-            Console.WriteLine($"Exames: {Exames}");
-            Console.WriteLine($"Anotações: {Anotacoes}");
-        }
-
-        #region CONTRUTOR
+        #region OVERRIDES
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegistoClinico"/> class.
+        /// Override do Método ToString
         /// </summary>
-        /// <param name="diagnostico">The diagnosis of the patient.</param>
-        /// <param name="exames">The examinations in the clinical record.</param>
-        /// <param name="anotacoes">The annotations made by the doctor.</param>
-        public RegistoClinico(string diagnostico, string exames, string anotacoes)
-        {
-            Diagnostico = diagnostico;
-            Exames = exames;
-            Anotacoes = anotacoes;
-        }
+        /// <returns></returns>
+        public override string ToString() => $"Diagnostico: {this.Diagnostico}\n" +
+            $"Exames: {this.Exames}\n" +
+            $"Anotacoes: {this.Anotacoes}\n";
 
         #endregion
+
         #endregion
+
     }
 }

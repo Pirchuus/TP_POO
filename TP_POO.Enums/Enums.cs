@@ -23,18 +23,6 @@
     };
 
     /// <summary>
-    /// Represents various functions within a medical context.
-    /// </summary>
-    public enum Funcao
-    {
-        Triagem,
-        AdministracaoMedicamento,
-        MonitoramentoPacientesObservacao,
-        CoordenacaoCuidados,
-        ProcedimentoMedicos
-    };
-
-    /// <summary>
     /// Represents medical specialties.
     /// </summary>
     public enum Especialidade

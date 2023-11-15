@@ -28,48 +28,21 @@ namespace TP_POO.Class
 
         #region MÉTODOS
 
-        /// <summary>
-        /// Calculates the priority of the patient based on severity and symptoms.
-        /// </summary>
-        /// <returns>The calculated priority value.</returns>
-        private int CalcularPrioridade()
-        {
-            int gravidadeValor = (int)gravidade;
-
-            string[] sintomasArray = Sintomas.Split(',');
-            int numeroSintomas = sintomasArray.Length;
-
-            int prioridade = gravidadeValor + numeroSintomas;
-
-            return prioridade;
-        }
+        #region OVERRIDES
 
         /// <summary>
-        /// Displays the information of a triage process.
+        /// Override do Método ToString
         /// </summary>
-        public void ExibirTriagem()
-        {
-            Console.WriteLine($"Gravidade: {gravidade}");
-            Console.WriteLine($"Sintomas: {Sintomas}");
-            Console.WriteLine($"Prioridade: {Prioridade}");
-        }
-
-        #region CONSTRUTOR
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Triagem"/> class.
-        /// </summary>
-        /// <param name="gravidade">Severity of the patient's discomfort.</param>
-        /// <param name="sintomas">Symptoms presented by the patient.</param>
-        public Triagem(Gravidade gravidade, string sintomas)
-        {
-            this.gravidade = gravidade;
-            Sintomas = sintomas;
-
-            Prioridade = CalcularPrioridade();
-        }
+        /// <returns></returns>
+        public override string ToString() => $"\tGravidade: {this.gravidade}\n" +
+            $"Sintomas: {this.Sintomas}\n" +
+            $"Prioridade: {this.Prioridade}";
 
         #endregion
+
         #endregion
+
+
+
     }
 }
