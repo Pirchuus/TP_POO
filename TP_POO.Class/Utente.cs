@@ -13,7 +13,7 @@ namespace TP_POO.Class
     public class Utente : Pessoa
     {
         //Variable.
-        private int numUtente = 1000;
+        private static int numUtente = 1000;
 
         #region ATRIBUTOS
         /// <summary>
@@ -37,13 +37,13 @@ namespace TP_POO.Class
         /// </summary>
         /// <returns></returns>
         public override string ToString() => 
-            $"\tUtente n{this.NumUtente}\n\n" +
-            $"Nome: {this.Nome}\n" +
-            $"Data de Nascimento: {this.DataNascimento} ({2022 - this.DataNascimento.Year} anos)\n" +
-            $"Sexo: {this.Sexo}\n " +
+            $"\n\tUtente {this.NumUtente}\n" +
+            $"Nome: {this.Nome}," +
+            $" Data de Nascimento: {this.DataNascimento} ({2023 - this.DataNascimento.Year} anos)\n" +
+            $"Sexo: {this.Sexo}\n" +
             $"Numero de Telemovel: {this.NumTelemovel}\n" +
-            $"Cidade: {this.Cidade}\n" +
-            $"Codigo Postal: {this.CodigoPostal}\n";
+            $"Cidade: {this.Cidade}," +
+            $" Codigo Postal: {this.CodigoPostal}";
         #endregion
         #endregion
     }

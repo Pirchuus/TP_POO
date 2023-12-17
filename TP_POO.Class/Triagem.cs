@@ -12,7 +12,7 @@ namespace TP_POO.Class
     public class Triagem
     {
         // Variable.
-        private int idTriagem = 100;
+        private static int idTriagem = 100;
 
         #region ATRIBUTOS
         /// <summary>
@@ -35,6 +35,11 @@ namespace TP_POO.Class
         /// </summary>
         public int Prioridade { get; set; }
 
+        /// <summary>
+        /// Patient who is going through the triage process.
+        /// </summary>
+        public Utente Utente { get; set; }
+
         #endregion
 
         #region MÉTODOS
@@ -52,9 +57,9 @@ namespace TP_POO.Class
         /// </summary>
         /// <returns></returns>
         public override string ToString() => 
-            $"\tGravidade: {this.Gravidade}\n" +
-            $"Sintomas: {this.Sintomas}\n" +
-            $"Prioridade: {this.Prioridade}";
+            $"Gravidade: {this.Gravidade}," +
+            $" Sintomas: {this.Sintomas}," +
+            $" Prioridade: {this.Prioridade}";
         #endregion
         #endregion
     }

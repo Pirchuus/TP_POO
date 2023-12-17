@@ -13,7 +13,7 @@ namespace TP_POO.Class
     public class Prescricao
     {
         // Variable
-        private int idMedicamento = 100;
+        private static int idMedicamento = 100;
 
         #region ATRIBUTOS
         /// <summary>
@@ -52,10 +52,10 @@ namespace TP_POO.Class
         /// </summary>
         /// <returns></returns>
         public override string ToString() => 
-            $"ID: {IdMedicamento}\n" +
-            $"Medicamento: {Medicamento}\n" +
-            $"Dosagem: {Dosagem}\n" +
-            $"Instruções: {Instrucoes}";
+            $"ID: {IdMedicamento}," +
+            $" Medicamento: {Medicamento}," +
+            $" Dosagem: {Dosagem}," +
+            $" Instruções: {Instrucoes}";
         #endregion
         #endregion
     }

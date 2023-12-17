@@ -15,7 +15,7 @@ namespace TP_POO.Class
         /// <summary>
         /// Variable
         /// </summary>
-        private int numeroMedico = 3000;
+        private static int numeroMedico = 3000;
 
         /// <summary>
         /// Attribute representing the doctor's registration number, i.e., the health professional number in the hospital.
@@ -36,6 +36,15 @@ namespace TP_POO.Class
         /// Constructor of the class Medico.
         /// </summary>
         public Medico() => this.NumRegistoMedico = numeroMedico++;
+
+        /// <summary>
+        /// Overriding the ToString method to return the doctor's information.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() =>
+            $"Nome: {Nome}," +
+            $" Especialidade: {Especialidade}," +
+            $" Número de Registro: {NumRegistoMedico}";
         #endregion
         #endregion
     }

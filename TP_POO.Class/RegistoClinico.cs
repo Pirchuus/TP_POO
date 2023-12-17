@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TP_POO.Enums;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TP_POO.Class
 {
@@ -13,7 +14,7 @@ namespace TP_POO.Class
     public class RegistoClinico
     {
         // Variable.
-        private int numeroRegisto = 500;
+        private static int numeroRegisto = 500;
 
         #region ATRIBUTOS
         /// <summary>
@@ -27,19 +28,35 @@ namespace TP_POO.Class
         public string Diagnostico { get; set; }
 
         /// <summary>
-        /// Attribute representing the examinations in the clinical record.
-        /// </summary>
-        public string Exames { get; set; }
-
-        /// <summary>
-        /// Attribute representing the annotations made by the doctor in the clinical record of a specific patient.
-        /// </summary>
-        public string Anotacoes { get; set; }
-
-        /// <summary>
         /// Attribute representing the patient of the clinical record.
         /// </summary>
         public Utente Utente { get; set; }
+
+        /// <summary>
+        /// Attribute representing the date of the clinical record.
+        /// </summary>
+        public DateTime Data { get; set; }
+
+        /// <summary>
+        /// Attribute representing the prescriptions made by the doctor for the patient.
+        /// </summary>
+        public Prescricao Prescricao { get; set; }
+
+        /// <summary>
+        /// Attribute representing the instructions for the prescription.
+        /// </summary>
+        public string Instrucoes { get; set; }
+
+
+        /// <summary>
+        /// Attribute representing the dosage for the prescription.
+        /// </summary>
+        public string Dosagem { get; set; }
+
+        /// <summary>
+        /// Attribute representing the symptoms of the patient.
+        /// </summary>
+        public string Sintomas { get; set; }
 
         #endregion
 
@@ -57,12 +74,13 @@ namespace TP_POO.Class
         /// Override of the ToString() method.
         /// </summary>
         /// <returns></returns>
-        public override string ToString() => 
-            $"Diagnostico: {this.Diagnostico}\n" +
-            $"Exames: {this.Exames}\n" +
-            $"Anotacoes: {this.Anotacoes}\n";
-
-        #endregion
-        #endregion
+        public override string ToString() =>
+            $"Registo: {NumeroRegisto}, " +
+            $"Utente: {Utente.Nome}, " +
+            $"Data: {Data.ToShortDateString()}, " +
+            $"Diagnostico: {Diagnostico}, ";
     }
+
+    #endregion
+    #endregion
 }
