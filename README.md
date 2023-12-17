@@ -8,5 +8,5 @@ Ana Pinto a23548
 Diogo Pinheiro a24016
 
 # Diagrama de Classes
-![image](https://github.com/Pirchuus/TP_POO/assets/101731306/40aeddfb-71fc-408e-9adb-1e6c87b5afc4)
+![Diagrama_POO](https://github.com/Pirchuus/TP_POO/assets/101731306/471c4916-10d1-4d04-b475-d9e9d3de2618)
 
