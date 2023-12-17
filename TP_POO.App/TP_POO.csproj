@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -11,6 +11,12 @@
     <ProjectReference Include="..\TP_POO.Class\TP_POO.Class.csproj" />
     <ProjectReference Include="..\TP_POO.Dados\TP_POO.Dados.csproj" />
     <ProjectReference Include="..\TP_POO.Enums\TP_POO.Enums.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="TP_POO.Exceptions">
+      <HintPath>..\TP_POO.Exceptions\bin\Debug\net8.0\TP_POO.Exceptions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
