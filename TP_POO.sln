@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TP_POO.Class", "TP_POO.Clas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TP_POO.Enums", "TP_POO.Enums\TP_POO.Enums.csproj", "{3D3014C3-5EEA-428C-A794-568BF4F041FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP_POO.Dados", "TP_POO.Dados\TP_POO.Dados.csproj", "{0CA85402-4B3E-48D5-B74C-D514C4C0789E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TP_POO.Dados", "TP_POO.Dados\TP_POO.Dados.csproj", "{0CA85402-4B3E-48D5-B74C-D514C4C0789E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP_POO.Exceptions", "TP_POO.Exceptions\TP_POO.Exceptions.csproj", "{40940FC5-454E-4D06-AF6B-77CA1F6AAC73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0CA85402-4B3E-48D5-B74C-D514C4C0789E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CA85402-4B3E-48D5-B74C-D514C4C0789E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CA85402-4B3E-48D5-B74C-D514C4C0789E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40940FC5-454E-4D06-AF6B-77CA1F6AAC73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40940FC5-454E-4D06-AF6B-77CA1F6AAC73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40940FC5-454E-4D06-AF6B-77CA1F6AAC73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40940FC5-454E-4D06-AF6B-77CA1F6AAC73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
