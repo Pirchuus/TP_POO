@@ -11,49 +11,9 @@ namespace TP_POO.Dados
         List<Triagem> triagens = new List<Triagem>();
 
         #region CONSTRUTOR
-        /// <summary>
-        /// Construtor
-        /// </summary>
-        public Triagens()
-        {
-            triagens.Add(new Triagem
-            {
-                Gravidade = Enums.Gravidade.Grave,
-                Sintomas = "Tem dores no braço e na perna. Apresenta-se com tonturas.",
-                Prioridade = CalcularPrioridade(Enums.Gravidade.Grave, "Dor perna, braço e tonturas" ),
-            });
-        }
         #endregion
 
         #region MÉTODOS
-        /// <summary>
-        /// Calculates the priority of the patient based on severity and symptoms.
-        /// </summary>
-        /// <returns>The calculated priority value.</returns>
-        private int CalcularPrioridade(Enums.Gravidade gravidade, string sintomas)
-        {
-            int priority = 0;
-
-            // Assign priority based on severity
-            switch (gravidade)
-            {
-                case Enums.Gravidade.PoucoGrave:
-                    priority += 1;
-                    break;
-                case Enums.Gravidade.Grave:
-                    priority += 2;
-                    break;
-                case Enums.Gravidade.MuitoGrave:
-                    priority += 3;
-                    break;
-            }
-            if (sintomas.Contains(""))
-            {
-                priority += 1;
-            }
-
-            return priority;
-        }
 
         /// <summary>
         /// Method that adds a triage to the list.
@@ -114,9 +74,7 @@ namespace TP_POO.Dados
         public void ShowTriagens()
         {
             foreach (Triagem triagem in triagens)
-            {
                 Console.WriteLine(triagem.ToString());
-            }
         }
         #endregion
     }

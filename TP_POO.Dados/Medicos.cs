@@ -81,12 +81,19 @@ namespace TP_POO.Dados
         /// <summary>
         /// Method that shows the list of doctors.
         /// </summary>
-        /// <param name="medicos"></param>
-        public void ShowMedicos(List<Medico> medicos)
+        public void ShowMedicos()
         {
+            Console.WriteLine($"Total de médicos: {medicos.Count}");
+            if (medicos.Count == 0)
+            {
+                Console.WriteLine("Nao ha medicos no sistema.");
+                return;
+            }
+
             foreach (Medico medico in medicos)
-                Console.WriteLine(medicos.ToString());
+                Console.WriteLine(medico.ToString());
         }
+
         #endregion
     }
 }

@@ -76,6 +76,23 @@ namespace TP_POO.Dados
             prescricoes[index] = prescricao;
         }
 
+
+        /// <summary>
+        /// Method to get a prescription by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the prescription.</param>
+        /// <returns>The prescription with the specified ID.</returns>
+        /// <exception cref="DadoNaoExisteException">Thrown when the prescription is not found.</exception>
+        public Prescricao GetPrescricaoById(int id)
+        {
+            var prescricao = prescricoes.FirstOrDefault(p => p.IdMedicamento == id);
+
+            if (prescricao == null)
+                throw new DadoNaoExisteException("Prescription with the given ID does not exist.");
+
+            return prescricao;
+        }
+
         /// <summary>
         /// Method that shows the prescriptions.
         /// </summary>

@@ -20,8 +20,13 @@ namespace TP_POO.Dados
             registoClinicos.Add(new RegistoClinico
             {
                 Diagnostico = "Tem um braço partido e uma fratura na perna",
-                Exames = "Raio-x 2 Membros",
-                Anotacoes = "É um utente com diabetes.",
+                Data = new DateTime(2021, 01, 01),
+                Prescricao = new Prescricao
+                {
+                    Medicamento = "Paracetamol",
+                    Dosagem = 500,
+                    Instrucoes = "Tomar 1 comprimido de 8 em 8 horas."
+                },
                 Utente = new Utente
                 {
                     Nome = "Maria Joao",
@@ -96,8 +101,35 @@ namespace TP_POO.Dados
         public void ShowRgistosClinicos(List<RegistoClinico> registoClinicos)
         {
             foreach (RegistoClinico registo in registoClinicos)
-            {
                 Console.WriteLine(registo.ToString());
+        }
+
+        /// <summary>
+        /// Method that shows the clinical records of a patient. 
+        /// </summary>
+        /// <param name="utente"></param>
+        public void ShowRegistosForUtente(Utente utente)
+        {
+            string fileName = $"{utente.NumUtente}_records.txt";
+
+            if (File.Exists(fileName))
+            {
+                string[] records = File.ReadAllLines(fileName);
+                if (records.Length == 0)
+                {
+                    Console.WriteLine("No previous records found.");
+                }
+                else
+                {
+                    foreach (string record in records)
+                    {
+                        Console.WriteLine(record);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("No previous records found.");
             }
         }
         #endregion

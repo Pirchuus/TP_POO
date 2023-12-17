@@ -1,4 +1,5 @@
 ﻿using TP_POO.Class;
+using TP_POO.Enums;
 using TP_POO.Exceptions;
 
 namespace TP_POO.Dados
@@ -16,8 +17,17 @@ namespace TP_POO.Dados
         /// </summary>
         public Utentes()
         {
-            utentes.Add(new Utente { Nome = "Manuel Cristo", NumTelemovel = 789456123, Cidade = Enums.Cidade.Porto });
-            utentes.Add(new Utente { Nome = "Francisca Castro", NumTelemovel = 321456789, Cidade = Enums.Cidade.Braga });
+            utentes.Add(new Utente { Nome = "Manuel Cristo", NumTelemovel = 789456123, Cidade = Enums.Cidade.Porto, 
+                DataNascimento = new DateOnly(1990, 10, 10), Sexo = Sexo.Masculino, CodigoPostal = "4100-007" });
+
+            utentes.Add(new Utente { Nome = "Francisca Castro", NumTelemovel = 321456789, Cidade = Enums.Cidade.Braga,
+                DataNascimento = new DateOnly(2007, 12, 04), Sexo = Sexo.Feminino, CodigoPostal = "4200-008" });
+            
+            utentes.Add(new Utente {Nome = "Joao Reis", NumTelemovel = 963214578, Cidade = Enums.Cidade.Guimaraes, 
+                DataNascimento = new DateOnly(1997, 08, 19), Sexo = Sexo.Masculino, CodigoPostal = "4300-009" });
+            
+            utentes.Add(new Utente {Nome = "Joana Filipa", NumTelemovel = 925458705, Cidade = Enums.Cidade.Barcelos, 
+                DataNascimento = new DateOnly(2000, 04, 14), Sexo = Sexo.Feminino, CodigoPostal = "4400-010" });
         }
         #endregion
 
@@ -79,10 +89,27 @@ namespace TP_POO.Dados
         /// <summary>
         /// Method that shows the list of patients.
         /// </summary>
-        public void ShowUtentes(List<Utente> utentes)
+        public void ShowUtentes()
         {
+            Console.WriteLine($"Total de utentes: {utentes.Count}");
+            if (utentes.Count == 0)
+            {
+                Console.WriteLine("Nao ha utentes no sistema.");
+                return;
+            }
+
             foreach (Utente utente in utentes)
-                Console.WriteLine(utente);
+                Console.WriteLine(utente.ToString());
+        }
+
+        /// <summary>
+        /// Method that returns a patient by its ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Utente GetUtenteById(int id)
+        {
+            return utentes.FirstOrDefault(u => u.NumUtente == id);
         }
         #endregion
     }
