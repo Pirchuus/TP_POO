@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TP_POO.Enums;
-using TP_POO.Class;
+﻿using TP_POO.Class;
+using TP_POO.Exceptions;
 
 namespace TP_POO.Dados
 {
@@ -31,28 +26,63 @@ namespace TP_POO.Dados
         /// Method that adds a patient to the list.
         /// </summary>
         /// <param name="novoUtente"></param>
-        public void AddUtente(Utente novoUtente) => this.utentes.Add(novoUtente);
+        /// <exception cref="DadoNulosException">novo Utente nulo</exception>
+        /// <exception cref="DadoJaExisteException">o utente a adicionar ja existe</exception>
+        public void AddUtente(Utente novoUtente)
+        {
+            if (novoUtente is null)
+                throw new DadoNulosException("Utente");
+
+            if (this.utentes.Exists(u => u.NumUtente.Equals(novoUtente.NumUtente)))
+                throw new DadoJaExisteException("Utente");
+
+            this.utentes.Add(novoUtente);
+        }
 
         /// <summary>
         /// Method that removes a patient from the list.
         /// </summary>
         /// <param name="utente"></param>
-        public void RemoveUtente(Utente utente) => this.utentes.Remove(utente);
+        /// <exception cref="DadoNulosException">utente nulo</exception>
+        /// <exception cref="DadoNaoExisteException">utente a eliminar nao exite</exception>
+        public void RemoveUtente(Utente utente)
+        {
+            if (utente is null)
+                throw new DadoNulosException("Utente");
+
+            if (!this.utentes.Exists(u => u.NumUtente.Equals(utente.NumUtente)))
+                throw new DadoNaoExisteException("Utente");
+
+            int index = this.utentes.FindIndex(u => u.NumUtente.Equals(utente.NumUtente));
+            
+            utentes.RemoveAt(index);
+        }
 
         /// <summary>
         /// Method that updates the information of a patient.
         /// </summary>
         /// <param name="utente"></param>
-        /// <param name="nome"></param>
-        /// <param name="numTelemovel"></param>
-        /// <param name="cidade"></param>
+        /// <exception cref="DadoNulosException">utente nulo</exception>
+        /// <exception cref="DadoNaoExisteException">utente a atualizar nao existe</exception>
         public void UpdateUtente(Utente utente)
         {
+            if(utente is null)
+                throw new DadoNulosException("Utente");
+
+            if (!this.utentes.Exists(u => u.NumUtente.Equals(utente.NumUtente)))
+                throw new DadoNaoExisteException("Utente");
+
             int index = utentes.FindIndex(u => u.NumUtente == utente.NumUtente);
-            if (index != -1)
-            {
-                utentes[index] = utente;
-            }
+            utentes[index] = utente;
+        }
+
+        /// <summary>
+        /// Method that shows the list of patients.
+        /// </summary>
+        public void ShowUtentes(List<Utente> utentes)
+        {
+            foreach (Utente utente in utentes)
+                Console.WriteLine(utente);
         }
         #endregion
     }

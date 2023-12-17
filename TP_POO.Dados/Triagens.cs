@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TP_POO.Enums;
-using TP_POO.Class;
+﻿using TP_POO.Class;
+using TP_POO.Exceptions;
 
 namespace TP_POO.Dados
 {
@@ -60,12 +55,20 @@ namespace TP_POO.Dados
             return priority;
         }
 
-        ///<summary>
+        /// <summary>
         /// Method that adds a triage to the list.
-        ///<summary>
-        ///<param name="novoTriagem">nova triagem</param>
+        /// <summary>
+        /// <param name="novoTriagem">nova triagem</param>
+        /// <exception cref="DadoNulosException">Se a nova triagem for nula</exception>
+        /// <exception cref="DadoJaExisteException">Se a nova triagem ja existir</exception>
         public void AddTriagem(Triagem novaTriagem)
         {
+            if (novaTriagem is null)
+                throw new DadoNulosException("Triagem");
+
+            if (this.triagens.Contains(novaTriagem))
+                throw new DadoJaExisteException("Triagem");
+
             this.triagens.Add(novaTriagem);
         }
 
@@ -73,21 +76,46 @@ namespace TP_POO.Dados
         /// Method that removes a triage from the list.
         /// </summary>
         /// <param name="triagem"></param>
+        /// <exception cref="DadoNulosException">Se a triagem for nula</exception>
+        /// <exception cref="DadoNaoExisteException">Se a triagem nao existir</exception>
         public void RemoveTriagem(Triagem triagem)
         {
-            this.triagens.Remove(triagem);
+            if (triagem is null)
+                throw new DadoNulosException("Triagem");
+
+            if (!this.triagens.Exists(t => t.IdTriagem.Equals(triagem.IdTriagem)))
+                throw new DadoNaoExisteException("Triagem");
+            
+            int index = this.triagens.FindIndex(t => t.IdTriagem.Equals(triagem.IdTriagem));
+            triagens.RemoveAt(index);
         }
 
         /// <summary>
         /// Method that updates a triage from the list.
         /// </summary>
         /// <param name="triagem"></param>
+        /// <exception cref="DadoNulosException">Se a triagem for nula</exception>
+        /// <exception cref="DadoNaoExisteException">Se a triagem nao existir</exception>
         public void UpdateTriagem(Triagem triagem)
         {
-            int index = this.triagens.IndexOf(triagem);
-            if (index != -1) 
+            if (triagem is null)
+                throw new DadoNulosException("Triagem");
+
+            if (!this.triagens.Exists(t => t.IdTriagem.Equals(triagem.IdTriagem)))
+                throw new DadoNaoExisteException("Triagem");
+
+            int index = triagens.FindIndex(t => t.IdTriagem.Equals(triagem.IdTriagem));
+            triagens[index] = triagem;
+        }
+
+        /// <summary>
+        /// Method that shows all triages.
+        /// </summary>
+        public void ShowTriagens()
+        {
+            foreach (Triagem triagem in triagens)
             {
-                this.triagens[index] = triagem;
+                Console.WriteLine(triagem.ToString());
             }
         }
         #endregion

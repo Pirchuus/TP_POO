@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TP_POO.Enums;
+﻿using TP_POO.Enums;
 using TP_POO.Class;
+using TP_POO.Exceptions;
 
 namespace TP_POO.Dados
 {
@@ -40,12 +36,20 @@ namespace TP_POO.Dados
         #endregion
 
         #region METODOS
-        ///<summary>
+        /// <summary>
         /// Method that adds a clinical record to the list.
-        ///<summary>
-        ///<param name="novoRegistoClinico">novo registo clinico</param>
+        /// <summary>
+        /// <param name="novoRegistoClinico">novo registo clinico</param>
+        /// <exception cref="DadoNulosException">Se o registo clinico for nulo</exception>
+        /// <exception cref="DadoJaExisteException">Se o registo clinico ja existir</exception>
         public void AddRegisto(RegistoClinico novoRegistoClinico)
         {
+            if(novoRegistoClinico is null)
+                throw new DadoNulosException("RegistoClinico");
+
+            if(this.registoClinicos.Exists(rc => rc.NumeroRegisto.Equals(novoRegistoClinico.NumeroRegisto)))
+                throw new DadoJaExisteException("RegistoClinico");
+
             this.registoClinicos.Add(novoRegistoClinico);
         }
 
@@ -53,21 +57,47 @@ namespace TP_POO.Dados
         /// Method that removes a clinical record from the list.
         /// </summary>
         /// <param name="registoClinico"></param>
+        /// <exception cref="DadoNulosException">Se o registo clinico for nulo</exception>
+        /// <exception cref="DadoNaoExisteException">Se o registo clinico nao existir</exception>
         public void RemoveRegisto(RegistoClinico registoClinico)
         {
-            this.registoClinicos.Remove(registoClinico);
+            if (registoClinico is null)
+                throw new DadoNulosException("RegistoClinico");
+
+            if (!this.registoClinicos.Exists(rc => rc.NumeroRegisto.Equals(registoClinico.NumeroRegisto)))
+                throw new DadoNaoExisteException("RegistoClinico");
+
+            int index = this.registoClinicos.FindIndex(rc => rc.NumeroRegisto.Equals(registoClinico.NumeroRegisto));
+            registoClinicos.RemoveAt(index);
         }
 
         /// <summary>
         /// Method that updates the information of a clinical record.
         /// </summary>
         /// <param name="registoClinico"></param>
+        /// <exception cref="DadoNulosException">Se o registo clinico for nulo</exception>
+        /// <exception cref="DadoNaoExisteException">Se o registo clinico nao existir</exception>
         public void UpdateRegisto(RegistoClinico registoClinico)
         {
+            if(registoClinico is null)
+                throw new DadoNulosException("RegistoClinico");
+
+            if (!this.registoClinicos.Exists(rc => rc.NumeroRegisto.Equals(registoClinico.NumeroRegisto)))
+                throw new DadoNaoExisteException("RegistoClinico");
+
             int index = registoClinicos.FindIndex(r => r.NumeroRegisto == registoClinico.NumeroRegisto);
-            if (index != -1)
+            registoClinicos[index] = registoClinico;
+        }
+
+        /// <summary>
+        /// Method that shows the clinical records.
+        /// </summary>
+        /// <param name="registoClinicos"></param>
+        public void ShowRgistosClinicos(List<RegistoClinico> registoClinicos)
+        {
+            foreach (RegistoClinico registo in registoClinicos)
             {
-                registoClinicos[index] = registoClinico;
+                Console.WriteLine(registo.ToString());
             }
         }
         #endregion
