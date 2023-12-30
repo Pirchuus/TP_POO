@@ -88,7 +88,7 @@ namespace TP_POO.Dados
             var prescricao = prescricoes.FirstOrDefault(p => p.IdMedicamento == id);
 
             if (prescricao == null)
-                throw new DadoNaoExisteException("Prescription with the given ID does not exist.");
+                throw new DadoNaoExisteException("Prescricao");
 
             return prescricao;
         }
