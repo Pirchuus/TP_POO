@@ -1,7 +1,7 @@
-﻿using TP_POO.Enums;
+﻿using TP_POO.Dados;
+using TP_POO.Enums;
 using TP_POO.Class;
-using TP_POO.Dados;
-
+using TP_POO.Exceptions;
 
 namespace TP_POO
 {
@@ -13,7 +13,6 @@ namespace TP_POO
         static RegistosClinicos registosClinicosManager = new RegistosClinicos();
         static Triagens triagensManager = new Triagens();
         static ListaEspera waitingListManager = new ListaEspera();
-
 
         static void Main(string[] args)
         {
@@ -121,6 +120,7 @@ namespace TP_POO
                 }
             }
         }
+
 
         static void CreateDoctor(Medicos medicosManager)
         {
@@ -306,8 +306,6 @@ namespace TP_POO
 
                 // Write the data to the file
                 File.AppendAllText(filePath, recordData);
-
-                Console.WriteLine($"Record saved successfully to {filePath}");
             }
             catch (Exception ex)
             {
