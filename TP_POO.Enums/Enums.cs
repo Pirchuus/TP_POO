@@ -1,4 +1,12 @@
-﻿namespace TP_POO.Enums
+﻿/*
+* Diogo Pinheiro e Ana Pinto
+* LEIM - 2º ano
+* TP_POO - 2023/2024
+* 
+* Enueradores
+**/
+
+namespace TP_POO.Enums
 {
     /// <summary>
     /// Represents the gender of an individual.
