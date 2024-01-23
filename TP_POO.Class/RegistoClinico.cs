@@ -1,10 +1,17 @@
+/*
+* Diogo Pinheiro e Ana Pinto
+* LEIM - 2º ano
+* TP_POO - 2023/2024
+* 
+* Classe Registo Clinico
+**/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TP_POO.Enums;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TP_POO.Class
 {

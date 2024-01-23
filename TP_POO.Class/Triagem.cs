@@ -1,3 +1,11 @@
+/*
+* Diogo Pinheiro e Ana Pinto
+* LEIM - 2º ano
+* TP_POO - 2023/2024
+* 
+* Classe Triagem
+**/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
