@@ -1,4 +1,12 @@
-﻿using TP_POO.Class;
+﻿/*
+* Diogo Pinheiro e Ana Pinto
+* LEIM - 2º ano
+* TP_POO - 2023/2024
+* 
+* Classe dados Prescricoes
+**/
+
+using TP_POO.Class;
 using TP_POO.Exceptions;
 
 namespace TP_POO.Dados
@@ -27,70 +35,89 @@ namespace TP_POO.Dados
         /// Method that adds a prescription to the list.
         /// </summary>
         /// <param name="prescricao"></param>
-        /// <exception cref="DadoNulosException">prescricao nula</exception>
-        /// <exception cref="DadoJaExisteException">prescricao a adicionar ja existe</exception>
-        public void AddPrescricao(Prescricao prescricao)
+        /// <returns></returns>
+        /// <exception cref="DadoNulosException"></exception>
+        /// <exception cref="DadoJaExisteException"></exception>
+        public bool AddPrescricao(Prescricao prescricao)
         {
-            if(prescricao is null)
+            if (prescricao is null)
                 throw new DadoNulosException("Prescricao");
 
-            if(this.prescricoes.Exists(p => p.IdMedicamento.Equals(prescricao.IdMedicamento)))
-                throw new DadoJaExisteException("Prescricao");
+            foreach (var p in prescricoes)
+            {
+                if (p.IdMedicamento == prescricao.IdMedicamento)
+                    throw new DadoJaExisteException("Prescricao");
+            }
 
-            this.prescricoes.Add(prescricao);
+            prescricoes.Add(prescricao);
+            return true;
         }
 
         /// <summary>
         /// Method that removes a prescription from the list.
         /// </summary>
-        /// <param name="prescricao"></param>
-        /// <exception cref="DadoNulosException">prescricao nula</exception>
-        /// <exception cref="DadoNaoExisteException">prescricao a eliminar nao existe</exception>
-        public void RemovePrescricao(Prescricao prescricao)
+        /// <param name="idPrescricao"></param>
+        /// <returns></returns>
+        /// <exception cref="DadoNaoExisteException"></exception>
+        public bool RemovePrescricao(int idPrescricao)
         {
-            if (prescricao is null)
-                throw new DadoNulosException("Prescricao");
+            int index = -1;
 
-            if (!this.prescricoes.Exists(p => p.IdMedicamento.Equals(prescricao.IdMedicamento)))
-                throw new DadoNaoExisteException("Prescricao");
+            for (int i = 0; i < prescricoes.Count; i++)
+            {
+                if (prescricoes[i].IdMedicamento == idPrescricao)
+                {
+                    index = i;
+                    break;
+                }
+            }
 
-            int index = prescricoes.FindIndex(p => p.IdMedicamento == prescricao.IdMedicamento);
+            if (index == -1)
+                throw new DadoNaoExisteException("Prescrição");
+
             prescricoes.RemoveAt(index);
+            return true;
         }
 
         /// <summary>
-        /// Method that updates the information of a prescription.
+        /// Method that updates a prescription.
         /// </summary>
         /// <param name="prescricao"></param>
-        /// <exception cref="DadoNulosException">prescricao nula</exception>
-        /// <exception cref="DadoNaoExisteException">prescricao a atualizar nao existe</exception>
-        public void UpdatePrescricao(Prescricao prescricao)
+        /// <returns></returns>
+        /// <exception cref="DadoNulosException"></exception>
+        /// <exception cref="DadoNaoExisteException"></exception>
+        public bool UpdatePrescricao(Prescricao prescricao)
         {
             if (prescricao is null)
                 throw new DadoNulosException("Prescricao");
 
-            if (!this.prescricoes.Exists(p => p.IdMedicamento.Equals(prescricao.IdMedicamento)))
-                throw new DadoNaoExisteException("Prescricao");
+            for (int i = 0; i < prescricoes.Count; i++)
+            {
+                if (prescricoes[i].IdMedicamento == prescricao.IdMedicamento)
+                {
+                    prescricoes[i] = prescricao;
+                    return true;
+                }
+            }
 
-            int index = prescricoes.FindIndex(p => p.IdMedicamento == prescricao.IdMedicamento);
-            prescricoes[index] = prescricao;
+            throw new DadoNaoExisteException("Prescricao");
         }
 
-
         /// <summary>
-        /// Method to get a prescription by its ID.
+        /// Method that gets a prescription by id.
         /// </summary>
-        /// <param name="id">The ID of the prescription.</param>
-        /// <returns>The prescription with the specified ID.</returns>
-        /// <exception cref="DadoNaoExisteException">Thrown when the prescription is not found.</exception>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="DadoNaoExisteException"></exception>
         public Prescricao GetPrescricaoById(int id)
         {
-            var prescricao = prescricoes.FirstOrDefault(p => p.IdMedicamento == id);
+            foreach (var prescricao in prescricoes)
+            {
+                if (prescricao.IdMedicamento == id)
+                    return prescricao;
+            }
 
-            if (prescricao == null)
-                throw new DadoNaoExisteException("Prescricao");
-
-            return prescricao;
+            throw new DadoNaoExisteException("Prescricao");
         }
 
         /// <summary>

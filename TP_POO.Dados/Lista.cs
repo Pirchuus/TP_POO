@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+* Diogo Pinheiro e Ana Pinto
+* LEIM - 2º ano
+* TP_POO - 2023/2024
+* 
+* Classe dados Lista de Espera
+**/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +21,23 @@ namespace TP_POO.Dados
         public List<Triagem> waitingList = new List<Triagem>();
 
         /// <summary>
-        /// Add a triagem to the waiting list
+        /// Add a patient to the waiting list
         /// </summary>
         /// <param name="triagem"></param>
-        public void AddToWaitingList(Triagem triagem)
+        /// <returns></returns>
+        public bool AddToWaitingList(Triagem triagem)
         {
-            // Find the insert position based on severity
-            int insertIndex = waitingList.FindIndex(t => t.Gravidade < triagem.Gravidade);
+            int insertIndex = -1;
+
+            // Iterate through the waiting list to find the correct insert position
+            for (int i = 0; i < waitingList.Count; i++)
+            {
+                if (waitingList[i].Gravidade < triagem.Gravidade)
+                {
+                    insertIndex = i;
+                    break;
+                }
+            }
 
             if (insertIndex == -1)
             {
@@ -31,6 +49,8 @@ namespace TP_POO.Dados
                 // Insert the triagem before the first less severe case
                 waitingList.Insert(insertIndex, triagem);
             }
+
+            return true;
         }
 
         /// <summary>

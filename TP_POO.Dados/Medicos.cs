@@ -1,4 +1,12 @@
-﻿using TP_POO.Enums;
+﻿/*
+* Diogo Pinheiro e Ana Pinto
+* LEIM - 2º ano
+* TP_POO - 2023/2024
+* 
+* Classe dados Medicos
+**/
+
+using TP_POO.Enums;
 using TP_POO.Class;
 using TP_POO.Exceptions;
 
@@ -28,54 +36,74 @@ namespace TP_POO.Dados
         /// Method that adds a doctor to the list.
         /// </summary>
         /// <param name="medico"></param>
-        /// <exception cref="DadoNulosException">Se o medico for nulo</exception>
-        /// <exception cref="DadoJaExisteException">Se o medcio ja existir</exception>
-        public void AddMedico(Medico medico)
+        /// <returns></returns>
+        /// <exception cref="DadoNulosException"></exception>
+        /// <exception cref="DadoJaExisteException"></exception>
+        public bool AddMedico(Medico medico)
         {
             if (medico is null)
                 throw new DadoNulosException("Medico");
 
-            if (this.medicos.Exists(d => d.NumRegistoMedico.Equals(medico.NumRegistoMedico)))
-                throw new DadoJaExisteException("Medico");
+            foreach (var d in medicos)
+            {
+                if (d.NumRegistoMedico.Equals(medico.NumRegistoMedico))
+                    throw new DadoJaExisteException("Medico");
+            }
 
-            this.medicos.Add(medico);
+            medicos.Add(medico);
+            return true;
         }
-
+        
         /// <summary>
         /// Method that removes a doctor from the list.
         /// </summary>
+        /// <param name="idMedico"></param>
+        /// <returns></returns>
+        /// <exception cref="DadoNaoExisteException"></exception>
+        public bool RemoveMedico(int idMedico)
+        {
+            bool found = false;
+
+            for (int i = 0; i < medicos.Count; i++)
+            {
+                if (medicos[i].NumRegistoMedico.Equals(idMedico))
+                {
+                    medicos.RemoveAt(i);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                throw new DadoNaoExisteException("Medicos");
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Method that updates a doctor.
+        /// </summary>
         /// <param name="medico"></param>
-        /// <exception cref="DadoNulosException">Se o medico for nulo</exception>
-        /// <exception cref="DadoNaoExisteException">Se o medico a eliminar nao existe</exception>
-        public void RemoveMedico(Medico medico)
+        /// <returns></returns>
+        /// <exception cref="DadoNulosException"></exception>
+        /// <exception cref="DadoNaoExisteException"></exception>
+        public bool UpdateMedico(Medico medico)
         {
             if (medico is null)
                 throw new DadoNulosException("Medico");
 
-            if (!this.medicos.Exists(d => d.NumRegistoMedico.Equals(medico.NumRegistoMedico)))
-                throw new DadoNaoExisteException("Medico");
+            for (int i = 0; i < medicos.Count; i++)
+            {
+                if (medicos[i].NumRegistoMedico.Equals(medico.NumRegistoMedico))
+                {
+                    medicos[i] = medico;
+                    return true;
+                }
+            }
 
-            int index = medicos.FindIndex(d => d.NumRegistoMedico.Equals(medico.NumRegistoMedico));
-            medicos.RemoveAt(index);
-        }
-
-        /// <summary>
-        /// Method that updates the information of a doctor.
-        /// </summary>
-        /// <param name="medico"></param>
-        /// <exception cref="DadoNulosException">Se o medico for nulo</exception>
-        /// <exception cref="DadoNaoExisteException">Se o medico a atualizar nao existir</exception>
-        public void UpdateMedico(Medico medico)
-        {
-            if(medico is null)
-                throw new DadoNulosException("Medico");
-
-            if (!this.medicos.Exists(d => d.NumRegistoMedico.Equals(medico.NumRegistoMedico)))
-                throw new DadoNaoExisteException("Medico");
-
-            int index = medicos.FindIndex(m => m.NumRegistoMedico == medico.NumRegistoMedico);
-
-            medicos[index] = medico;
+            throw new DadoNaoExisteException("Medico");
         }
 
         /// <summary>
@@ -93,7 +121,6 @@ namespace TP_POO.Dados
             foreach (Medico medico in medicos)
                 Console.WriteLine(medico.ToString());
         }
-
         #endregion
     }
 }

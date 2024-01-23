@@ -1,6 +1,17 @@
-﻿using TP_POO.Enums;
+﻿/*
+* Diogo Pinheiro e Ana Pinto
+* LEIM - 2º ano
+* TP_POO - 2023/2024
+* 
+* Classe dados Registos Clinicos
+**/
+
+using TP_POO.Enums;
 using TP_POO.Class;
 using TP_POO.Exceptions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Globalization;
+using System.Text;
 
 namespace TP_POO.Dados
 {
@@ -17,6 +28,7 @@ namespace TP_POO.Dados
         /// </summary>
         public RegistosClinicos()
         {
+
             registoClinicos.Add(new RegistoClinico
             {
                 Diagnostico = "Tem um braço partido e uma fratura na perna",
@@ -43,74 +55,85 @@ namespace TP_POO.Dados
         #region METODOS
         /// <summary>
         /// Method that adds a clinical record to the list.
-        /// <summary>
-        /// <param name="novoRegistoClinico">novo registo clinico</param>
-        /// <exception cref="DadoNulosException">Se o registo clinico for nulo</exception>
-        /// <exception cref="DadoJaExisteException">Se o registo clinico ja existir</exception>
-        public void AddRegisto(RegistoClinico novoRegistoClinico)
+        /// </summary>
+        /// <param name="novoRegistoClinico"></param>
+        /// <returns></returns>
+        /// <exception cref="DadoNulosException"></exception>
+        /// <exception cref="DadoJaExisteException"></exception>
+        public bool AddRegisto(RegistoClinico novoRegistoClinico)
         {
-            if(novoRegistoClinico is null)
+            if (novoRegistoClinico is null)
                 throw new DadoNulosException("RegistoClinico");
 
-            if(this.registoClinicos.Exists(rc => rc.NumeroRegisto.Equals(novoRegistoClinico.NumeroRegisto)))
-                throw new DadoJaExisteException("RegistoClinico");
+            foreach (var rc in registoClinicos)
+            {
+                if (rc.NumeroRegisto.Equals(novoRegistoClinico.NumeroRegisto))
+                    throw new DadoJaExisteException("RegistoClinico");
+            }
 
-            this.registoClinicos.Add(novoRegistoClinico);
+            registoClinicos.Add(novoRegistoClinico);
+            return true;
         }
 
         /// <summary>
         /// Method that removes a clinical record from the list.
         /// </summary>
+        /// <param name="numRegisto"></param>
+        /// <returns></returns>
+        /// <exception cref="DadoNaoExisteException"></exception>
+        public bool RemoveRegisto(int numRegisto)
+        {
+            bool found = false;
+
+            for (int i = 0; i < registoClinicos.Count; i++)
+            {
+                if (registoClinicos[i].NumeroRegisto.Equals(numRegisto))
+                {
+                    registoClinicos.RemoveAt(i);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                throw new DadoNaoExisteException("Registos Clinicos");
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Method that updates a clinical record.
+        /// </summary>
         /// <param name="registoClinico"></param>
-        /// <exception cref="DadoNulosException">Se o registo clinico for nulo</exception>
-        /// <exception cref="DadoNaoExisteException">Se o registo clinico nao existir</exception>
-        public void RemoveRegisto(RegistoClinico registoClinico)
+        /// <returns></returns>
+        /// <exception cref="DadoNulosException"></exception>
+        /// <exception cref="DadoNaoExisteException"></exception>
+        public bool UpdateRegisto(RegistoClinico registoClinico)
         {
             if (registoClinico is null)
                 throw new DadoNulosException("RegistoClinico");
 
-            if (!this.registoClinicos.Exists(rc => rc.NumeroRegisto.Equals(registoClinico.NumeroRegisto)))
-                throw new DadoNaoExisteException("RegistoClinico");
+            for (int i = 0; i < registoClinicos.Count; i++)
+            {
+                if (registoClinicos[i].NumeroRegisto.Equals(registoClinico.NumeroRegisto))
+                {
+                    registoClinicos[i] = registoClinico;
+                    return true;
+                }
+            }
 
-            int index = this.registoClinicos.FindIndex(rc => rc.NumeroRegisto.Equals(registoClinico.NumeroRegisto));
-            registoClinicos.RemoveAt(index);
+            throw new DadoNaoExisteException("RegistoClinico");
         }
 
         /// <summary>
-        /// Method that updates the information of a clinical record.
+        /// Method that shows all clinical records fo a Utente based in the Utente id.
         /// </summary>
-        /// <param name="registoClinico"></param>
-        /// <exception cref="DadoNulosException">Se o registo clinico for nulo</exception>
-        /// <exception cref="DadoNaoExisteException">Se o registo clinico nao existir</exception>
-        public void UpdateRegisto(RegistoClinico registoClinico)
+        /// <param name="userId"></param>
+        public void ShowRegistosForUtente(int userId)
         {
-            if(registoClinico is null)
-                throw new DadoNulosException("RegistoClinico");
-
-            if (!this.registoClinicos.Exists(rc => rc.NumeroRegisto.Equals(registoClinico.NumeroRegisto)))
-                throw new DadoNaoExisteException("RegistoClinico");
-
-            int index = registoClinicos.FindIndex(r => r.NumeroRegisto == registoClinico.NumeroRegisto);
-            registoClinicos[index] = registoClinico;
-        }
-
-        /// <summary>
-        /// Method that shows the clinical records.
-        /// </summary>
-        /// <param name="registoClinicos"></param>
-        public void ShowRgistosClinicos(List<RegistoClinico> registoClinicos)
-        {
-            foreach (RegistoClinico registo in registoClinicos)
-                Console.WriteLine(registo.ToString());
-        }
-
-        /// <summary>
-        /// Method that shows the clinical records of a patient. 
-        /// </summary>
-        /// <param name="utente"></param>
-        public void ShowRegistosForUtente(Utente utente)
-        {
-            string fileName = $"{utente.NumUtente}_records.txt";
+            string fileName = $"{userId}_records.bin";
 
             if (File.Exists(fileName))
             {
@@ -127,10 +150,64 @@ namespace TP_POO.Dados
                     }
                 }
             }
-            else
+        }
+
+        /// <summary>
+        /// Method that prints all clinical records.
+        /// </summary>
+        /// <returns></returns>
+        public List<RegistoClinico> GetRegistosClinicos()
+        {
+            return registoClinicos;
+        }
+
+        /// <summary>
+        /// Method that reads all clinical records from a file.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <exception cref="FileNotFoundException"></exception>
+        public string LoadRecordsFromFile(string filePath)
+        {
+            string records = "";
+
+            try
             {
-                Console.WriteLine("No previous records found.");
+                using (BinaryReader reader = new BinaryReader(File.Open(filePath, FileMode.Open)))
+                {
+                    while (reader.PeekChar() > -1)
+                    {
+                        RegistoClinico novoRegisto = new RegistoClinico();
+
+                        novoRegisto.Diagnostico = reader.ReadString();
+                        novoRegisto.Utente = new Utente { Nome = reader.ReadString() };
+                        novoRegisto.Utente.DataNascimento = DateOnly.Parse(reader.ReadString());
+                        novoRegisto.Data = DateTime.Parse(reader.ReadString());
+                        novoRegisto.Prescricao = new Prescricao
+                        {
+                            Medicamento = reader.ReadString(),
+                            Dosagem = reader.ReadDouble(),
+                            Instrucoes = reader.ReadString()
+                        };
+                        novoRegisto.Sintomas = reader.ReadString();
+
+                        records += $"Registo Clínico:\n";
+                        records += $"Diagnóstico: {novoRegisto.Diagnostico}\n";
+                        records += $"Utente: {novoRegisto.Utente.Nome}\n";
+                        records += $"Data de Nascimento: {novoRegisto.Utente.DataNascimento}\n";
+                        records += $"Data do Registo: {novoRegisto.Data.ToShortDateString()}\n";
+                        records += $"Prescrição: {novoRegisto.Prescricao.Medicamento}\n";
+                        records += $"Dosagem: {novoRegisto.Prescricao.Dosagem}\n";
+                        records += $"Instruções: {novoRegisto.Prescricao.Instrucoes}\n";
+                        records += $"Sintomas: {novoRegisto.Sintomas}\n\n";
+                    }
+                }
             }
+            catch (FileNotFoundException)
+            {
+                throw new FileNotFoundException("File not found.");
+            }
+
+            return records;
         }
         #endregion
     }
