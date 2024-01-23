@@ -1,4 +1,12 @@
-﻿using TP_POO.Dados;
+﻿/*
+* Diogo Pinheiro e Ana Pinto
+* LEIM - 2º ano
+* TP_POO - 2023/2024
+* 
+* Programa Principal
+**/
+
+using TP_POO.Dados;
 using TP_POO.Enums;
 using TP_POO.Class;
 using TP_POO.Exceptions;
@@ -7,15 +15,15 @@ namespace TP_POO
 {
     class Program
     {
-        static Medicos medicosManager = new Medicos();
-        static Prescricoes prescricoesManager = new Prescricoes();
-        static Utentes utentesManager = new Utentes();
-        static RegistosClinicos registosClinicosManager = new RegistosClinicos();
-        static Triagens triagensManager = new Triagens();
-        static ListaEspera waitingListManager = new ListaEspera();
 
         static void Main(string[] args)
         {
+            Medicos medicosManager = new Medicos();
+            Prescricoes prescricoesManager = new Prescricoes();
+            Utentes utentesManager = new Utentes();
+            RegistosClinicos registosClinicosManager = new RegistosClinicos();
+            Triagens triagensManager = new Triagens();
+            ListaEspera waitingListManager = new ListaEspera();
 
             bool running = true;
             while (running)
@@ -31,10 +39,10 @@ namespace TP_POO
                 switch (option)
                 {
                     case "1":
-                        ManagementMenu();
+                        ManagementMenu(medicosManager, prescricoesManager);
                         break;
                     case "2":
-                        UserMenu();
+                        UserMenu(utentesManager, triagensManager, waitingListManager, prescricoesManager, registosClinicosManager);
                         break;
                     case "0":
                         running = false;
@@ -46,7 +54,7 @@ namespace TP_POO
             }
         }
 
-        static void ManagementMenu()
+        static void ManagementMenu(Medicos medicosManager, Prescricoes prescricoesManager)
         {
 
             bool running = true;
@@ -90,7 +98,7 @@ namespace TP_POO
             }
         }
 
-        static void UserMenu()
+        static void UserMenu(Utentes utentesManager, Triagens triagensManager, ListaEspera waitingListManager, Prescricoes prescricoesManager, RegistosClinicos registosClinicosManager)
         {
             bool running = true;
             while (running)
@@ -106,10 +114,10 @@ namespace TP_POO
                 switch (choice)
                 {
                     case "1":
-                        EmergencyVisit();
+                        EmergencyVisit(utentesManager, triagensManager, waitingListManager);
                         break;
                     case "2":
-                        Consultation();
+                        Consultation(waitingListManager, prescricoesManager, registosClinicosManager);
                         break;
                     case "0":
                         running = false;
@@ -122,7 +130,7 @@ namespace TP_POO
         }
 
 
-        static void CreateDoctor(Medicos medicosManager)
+        static void CreateDoctor(Medicos medicos)
         {
             Console.WriteLine("\n-- Create New Doctor --");
 
@@ -144,7 +152,7 @@ namespace TP_POO
             try
             {
                 Medico newDoctor = new Medico { Nome = name, Especialidade = especialidade };
-                medicosManager.AddMedico(newDoctor);
+                medicos.AddMedico(newDoctor);
                 Console.WriteLine($"{name} added as {especialidade}.");
             }
             catch (Exception ex)
@@ -152,7 +160,7 @@ namespace TP_POO
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
-        static void CreatePrescription(Prescricoes prescricoesManager)
+        static void CreatePrescription(Prescricoes prescricoes)
         {
             Console.WriteLine("\n-- Create New Prescription --");
 
@@ -168,24 +176,24 @@ namespace TP_POO
 
             // Create and Add Prescription
             Prescricao newPrescription = new Prescricao { Medicamento = medicamento, Dosagem = dosagem, Instrucoes = instrucoes };
-            prescricoesManager.AddPrescricao(newPrescription);
+            prescricoes.AddPrescricao(newPrescription);
 
             Console.WriteLine("Prescription added successfully.");
         }
-        static void EmergencyVisit()
+        static void EmergencyVisit(Utentes utentes, Triagens triagens, ListaEspera waitingList)
         {
             Console.WriteLine("\n-- Emergency Visit --");
 
             // show utentes
             Console.Clear();
-            utentesManager.ShowUtentes();
+            utentes.ShowUtentes();
 
             // chose utente
             Console.Write("\n\nEnter utente ID's for triage: ");
             int utenteID = int.Parse(Console.ReadLine());
 
             // Retrieve the Utente object
-            Utente selectedUtente = utentesManager.GetUtenteById(utenteID);
+            Utente selectedUtente = utentes.GetUtenteById(utenteID);
             if (selectedUtente == null)
             {
                 Console.WriteLine("Utente not found.");
@@ -210,22 +218,22 @@ namespace TP_POO
             try
             {
                 Triagem newTriagem = new Triagem { Utente = selectedUtente, Sintomas = sintomas, Gravidade = gravidade };
-                triagensManager.AddTriagem(newTriagem);
-                waitingListManager.AddToWaitingList(newTriagem);
-                utentesManager.RemoveUtente(selectedUtente);
+                triagens.AddTriagem(newTriagem);
+                waitingList.AddToWaitingList(newTriagem);
+                utentes.RemoveUtente(utenteID);
                 Console.WriteLine($"\nUtente {selectedUtente.Nome} added to waiting list as severity: {gravidade}.\n\n");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
             }
-            waitingListManager.ShowWaitingList();
+            waitingList.ShowWaitingList();
             Console.ReadKey();
         }
-        static void Consultation()
+        static void Consultation(ListaEspera waitingList, Prescricoes prescricoes, RegistosClinicos registosClinicos)
         {
             // Check if the waiting list is empty
-            if (waitingListManager.waitingList.Count == 0)
+            if (waitingList.waitingList.Count == 0)
             {
                 Console.WriteLine("Waiting list is empty.");
                 Console.ReadKey();
@@ -233,23 +241,19 @@ namespace TP_POO
             }
 
             // Get the first patient from the waiting list
-            Triagem nextPatientTriagem = waitingListManager.GetNextPatient();
+            Triagem nextPatientTriagem = waitingList.GetNextPatient();
             Utente nextPatient = nextPatientTriagem.Utente;
 
             // Show previous clinical records of the patient
             Console.WriteLine($"\nShowing previous clinical records for {nextPatient.Nome}...");
 
-            string fileName = $"{nextPatient.NumUtente}_records.txt";
+            string fileName = $"{nextPatient.NumUtente}_records.bin";
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
-            string records = ReadFile(filePath);
+            string records = registosClinicos.LoadRecordsFromFile(filePath);
 
-            if (!string.IsNullOrEmpty(records))
+            foreach (string record in records.Split('\n'))
             {
-                Console.WriteLine(records);
-            }
-            else
-            {
-                Console.WriteLine("No previous records found.");
+                Console.WriteLine(record);
             }
 
             Console.WriteLine("\nPress any key to continue to the new clinical record...");
@@ -261,11 +265,11 @@ namespace TP_POO
             string diagnosis = Console.ReadLine();
 
             Console.WriteLine("\n");
-            prescricoesManager.ShowPrescricoes();
+            prescricoes.ShowPrescricoes();
             Console.Write("Enter prescription ID: ");
             int prescriptionID = int.Parse(Console.ReadLine());
 
-            DateTime recordDate = DateTime.Now; // Record the date of the consultation
+            DateTime recordDate = DateTime.Now;
 
             // Create the clinical record instance
             RegistoClinico newRecord = new RegistoClinico
@@ -273,14 +277,14 @@ namespace TP_POO
                 Utente = nextPatient,
                 Diagnostico = diagnosis,
                 Data = recordDate,
-                Prescricao = prescricoesManager.GetPrescricaoById(prescriptionID),
-                Instrucoes = prescricoesManager.GetPrescricaoById(prescriptionID).Instrucoes,
-                Dosagem = prescricoesManager.GetPrescricaoById(prescriptionID).Dosagem.ToString(),
+                Prescricao = prescricoes.GetPrescricaoById(prescriptionID),
+                Instrucoes = prescricoes.GetPrescricaoById(prescriptionID).Instrucoes,
+                Dosagem = prescricoes.GetPrescricaoById(prescriptionID).Dosagem.ToString(),
                 Sintomas = nextPatientTriagem.Sintomas
             };
 
             // Add the new clinical record
-            registosClinicosManager.AddRegisto(newRecord);
+            registosClinicos.AddRegisto(newRecord);
 
             // Save the record to a file
             SaveRecordToFile(newRecord);
@@ -288,40 +292,29 @@ namespace TP_POO
         }
         static void SaveRecordToFile(RegistoClinico record)
         {
-            string fileName = $"{record.Utente.NumUtente}_records.txt";
+            string fileName = $"{record.Utente.NumUtente}_records.bin";
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
 
             try
             {
-                // Create a string to represent the record's data
-                string recordData = $"Clinical Record for Utente ID: {record.Utente.NumUtente}\n" +
-                                    $"Name: {record.Utente.Nome}\n" +
-                                    $"Date: {record.Data.ToShortDateString()}\n" +
-                                    $"Diagnosis: {record.Diagnostico}\n" +
-                                    $"Symptoms: {record.Sintomas}\n" +
-                                    $"Prescription: {record.Prescricao.Medicamento} " +
-                                    $"Dosage: {record.Dosagem} " +
-                                    $"Instructions: {record.Instrucoes}\n" +
-                                    $"--------------------------------------\n";
-
-                // Write the data to the file
-                File.AppendAllText(filePath, recordData);
+                using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.Append)))
+                {
+                    // Write clinical record data to the binary file
+                    writer.Write(record.Diagnostico);
+                    writer.Write(record.Utente.Nome);
+                    writer.Write(record.Utente.DataNascimento.ToString("yyyy-MM-dd"));
+                    writer.Write(record.Data.ToString("yyyy-MM-dd"));
+                    writer.Write(record.Prescricao.Medicamento);
+                    writer.Write(record.Prescricao.Dosagem);
+                    writer.Write(record.Prescricao.Instrucoes);
+                    writer.Write(record.Sintomas);
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error saving record: {ex.Message}");
             }
         }
-        static string ReadFile(string filePath)
-        {
-            if (File.Exists(filePath))
-            {
-                return File.ReadAllText(filePath);
-            }
-            else
-            {
-                return null;
-            }
-        }
+
     }
 }
